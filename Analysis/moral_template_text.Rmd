@@ -1,0 +1,211 @@
+---
+title: "Moral templates in naturally occurring text"
+author: "Nicolas Restrepo"
+date: "8/16/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = F, message = F)
+```
+
+```{r}
+library(tidyverse)
+library(broom)
+```
+
+## Set up 
+
+The previous survey studies show valuable insights: distance from a moral template is informative of whether respondents consider events harmful and also of how quickly they are able to categorize them as such. Furthermore, they help bring clarity to the debate about harmless wrongs. They are considered very harmful, categorized quickly, and yet they are really far away from the prototype. These events, then, *are* weird - as Gray and Schein suggest - but their weirdness cannot be easily dismissed. They are weird because their semantic structure does not correspond to their perceived harmfulness. As a speculative explanation, I noted that research should focus on how these events might become 'harmified'. I argued that perhaps this is why we see more moral scaffolding - taboos and normative rules - around them; to get them into the realm of harm and danger. 
+
+The main shortcoming of these studies, however, is that the events have a particular structure. They are well-established violations. I am, in a way, sampling on the dependent variable. The challenge, then, is to see whether this theory has external validity; whether it has explanatory power outside the context of the surveys. To do this, I look at around 23000 articles published by the online outlet Vox. 
+
+## Data 
+
+```{r}
+vox_articles <- read_csv('Data/vox_articles.csv')
+glimpse(vox_articles)
+```
+
+The data-set contains 23022 articles published between 2014 and 2017. Their topics range from "Business & Finance" to the "War on Drugs". This is a comprehensive data-set of a relatively widely read publication, which presents a good setting to test my findings. 
+
+## Hypotheses and Method
+
+The question is how do I translate the findings of the surveys into testable hypotheses in naturally occurring language. A way in is using sentiment analysis. The survey findings suggest that how far away an event is from the moral template should be related to the general sentiment of the words around it. The first hypothesis, then, would be: 
+
+1) The negative sentiment of the text surrounding an event should be negatively related to how distant said event is from the moral template. 
+
+This relationship is not as obvious as it might seem at first. Recall that the semantic attributes that go into calculating distance from the template are the behavior's evaluation, the behavior's potency, and the object's potency. So there's only one measure here that would map to negativity directly. Seeing a relationship between distance from the template and negative sentiment would be exciting. 
+
+But the more exciting hypothesis relates to the more speculative conclusions that stemmed from the surveys. I can use these data to test the idea that events that are very negative *and* very far away from the template - like the 'purity' scenarios - should have more moral scaffolding around it. Moral scaffolding here could be operationalized as normative, denunciatory and/or justificatory language. I elaborate on this operationalization below. The second hypothesis then would be: 
+
+2) In examining the count of normative words around an event, there should be a positive interaction effect between negative sentiment and distance from the moral template. This means that events that are very far away from the template and really negative should have a higher number of normative words around them. 
+
+In order to extract the events from the articles I use the python libraries spaCy and textacy. This allows me identify all subject-verb-object triplets in each article. The total amount of extracted triplets is around 890.000. I filter this data-set for the triplets for which I have EPA values. The final data-set I use for the analysis consists of 10.023 triplets. 
+
+For the sentiment analysis, I use the Vader sentiment processor from the NLTK library. I take the 50 words of text before and after each triplet and run these chunks through the sentiment analyzer. 
+
+In order to examine the 'moral scaffolding' around the triplets, I use the same chunks of text and contrast them with a dictionary of normative, denunciatory, and justificatory language I built. To build this dictionary, I started with the 'general morality' words from the MFT dictionary, focusing on the negative terms. Then, I tried to find as many synonyms as possible for each word, to cast a wider net. This is the resulting list of words: 
+
+```{r}
+moral_dictionary  <- c("wrong","evil","immoral","bad","offend","offensive","transgress", "taboo", "unlawful", "illegal","integrity", "should", "ought", "norm", "justify", "law", "rule", "contract", "acceptable","unacceptable", "obligation", "duty", "blame", "sin", "sinful", "blasphemy", "defamation", "punish", "admissible", "unobjectionable","atrocious", "awful", "dreadful", "abominable","beastly","erroneous","icky", "incorrect", "castigation","censure","denounce", "denunciation","diatribe","disapprobation", "disapproval", "incriminate", "indictment", "rebuke", "reprimand", "repudiation","reprobation", "desecration", "heresy", "abuse", "indignity", "lewd", "profane", "impiety","sacrilege", "arrangement", "bond", "commitment", "pact", "pledge", "convention", "covenant","denigrate", "dirt", "smear", "slur", "villain", "vilification", "calling", "mission", "catastrophe","corruption", "harm", "suffering", "debauchery", "depravity", "infamy", "vice", "vileness", "banned","criminal", "illegitimate", "illicit", "outlawed", "prohibited", "unauthorized", "unconstitutional","unwarranted", "wrongful", "crooked", "felony", "forbidden", "interdicted", "lawless", "proscribed", "prosecutable", "shady", "violate", "depraved", "dishonest", "indecent", "nefarious", "obscene","pornographic", "shameless", "unscrupulous", "licentious", "advocate", "condone", "defend", "explain", "maintain", "rationalize", "uphold", "alibi", "exculpate", "pardon", "plead", "rebut", "excuse", "exonerate", "code", "mandate", "precedent", "requirement", "command", "commandment", "dictate", "edict", "ordinance", "injunction","precept", "debt", "aggrieve", "disgust", "gall", "horrify", "outrage", "shock", "sicken", "upset","affront", "trespass", "must", "compelling", "chastise", "discipline", "chasten", "exile", "maltreat", "oppress", "reprove", "scourge", "prohibited", "unmentionable", "distasteful", "improper", "inadmissible", "repugnant", "dangerous", "perilous", "terrible", "threatening", "unsafe", "unhealthy")
+```
+
+We find language use to denounce like "indictment" and "licentious"; vocabulary used to justify like "alibi" and "condone"; and language used to prescribe like "should" and "duty". The survey results suggest that we should find more of this language around the 'weird', so-called 'harmless' wrongs. 
+
+The data-set, after calculating sentiment and count of moral vocabulary, looks like this: 
+
+```{r}
+# Get the datasets in 
+triplets_sentiment <- read_csv("Data/triplets_full.csv")
+dictionary <- read_csv("Data/FullSurveyorUSMeans.csv")
+
+# I need to clean the dictionary a bit before we do the matching 
+dictionary <- dictionary %>% 
+  mutate(term = term %>% tolower(.) %>% str_replace_all(., "_", " "))
+
+# Empty matrix for the loop 
+epa_matrix <- matrix(NA, nrow(triplets_sentiment), 6)
+
+for (x in 1:nrow(triplets_sentiment)) {
+
+match_obj <- match(triplets_sentiment$clean_objs[x], dictionary$term)
+match_verb <- match(triplets_sentiment$clean_verbs[x], dictionary$term)
+epa_matrix[x,1:3] <- dictionary[match_obj, 2:4] %>% as.matrix()
+epa_matrix[x,4:6] <- dictionary[match_verb, 2:4] %>% as.matrix
+
+
+}
+
+# Rename resulting matrix 
+colnames(epa_matrix) <- c("oe", "op", "oa", "be", "bp", "bo")
+
+
+df <- cbind(triplets_sentiment, epa_matrix)
+
+# Now calculate the Euclidean distance 
+eucl_dist_prot <- function(x) { 
+  op <-  df[x, 'op'] 
+  be <-  df[x, 'be'] 
+  bp <-  df[x, 'bp']
+  
+  # Formula   
+  # The values of the prototype are always the ones the events are compared against
+  distance <- sqrt(((-1.14) - op)^2 + ((-4.26) - be)^2 + (1.95 - bp)^2)
+  return(as.double(distance))
+}
+
+distances_prot <- map_dbl(1:nrow(df), eucl_dist_prot)
+
+# Add to the main dataframe 
+df <- df %>% 
+  mutate(distances_prot = distances_prot) %>% 
+  mutate(dist_stand = as.vector(scale(distances_prot)), 
+         comp_stand = as.vector(scale(compound)), 
+         neg_stand = as.vector(scale(negative)))
+
+glimpse(df)
+```
+## Preliminary Analysis
+
+The first hypothesis should be relatively straightforward to test. I need to see whether distance from the moral template predicts the negative sentiment around a triplet. I am going to use simple OLS here. 
+
+```{r}
+
+first_model <- lm(neg_stand ~ dist_stand, data = df) 
+sjPlot::tab_model(first_model)
+```
+
+There is a negative relationship indeed. A unit increase in distance from the prototype results in a 0.3 standard deviations decrease in negative sentiment. This looks promising for hypothesis one. 
+
+Now, let's look at hypothesis two. Here, I am going to use a Poisson regression, where the outcome variable of interest is the count of moral vocabulary around the text. I am going to use two predictor variables: distance standardized and negative sentiment standardized. The interaction between the two is my main focus here. 
+
+```{r}
+poiss_mod <- glm(moral_count ~ dist_stand*neg_stand, data = df, family = "poisson") 
+sjPlot::tab_model(poiss_mod)
+```
+
+The coefficients seem to support our hypothesis. As distance increases, the rate of negative words decreases. As negative sentiment increases, the rate of negative words increases considerably, as was expected given that many of the words in my moral vocabulary dictionary are negative. The interaction term is positive and statistically significant. This means that, in triplets that are very negative, we should expect the relationship between distance and moral_count to actually be positive. This is just what hypothesis two outlines. Let's try to plot this. 
+
+```{r}
+mock_data <- tibble(index = 1:1e3, 
+                    neg_stand = rep(quantile(df$neg_stand, 0.5), 1000), 
+                    dist_stand = seq(from = min(df$dist_stand), to = max(df$dist_stand), length.out = 1000))
+mock_data2 <- tibble(index = 1:1e3, 
+                     neg_stand = rep(quantile(df$neg_stand, 0.90), 1000), 
+                     dist_stand = seq(from = min(df$dist_stand), to = max(df$dist_stand), length.out = 1000))
+mock_data3 <- tibble(index = 1:1e3, 
+                     neg_stand = rep(quantile(df$neg_stand, 0.97), 1000), 
+                     dist_stand = seq(from = min(df$dist_stand), to = max(df$dist_stand), length.out = 1000))
+
+preds1 <- predict(poiss_mod, newdata = mock_data, type = "link", se.fit = TRUE)
+critval <- 1.96 ## approx 95% CI
+
+predictions_low <- tibble(
+         upr = preds1$fit + (critval * preds1$se.fit),
+         lwr = preds1$fit - (critval * preds1$se.fit),
+         fit = preds1$fit,
+         fit2 = poiss_mod$family$linkinv(fit),
+         upr2 = poiss_mod$family$linkinv(upr),
+         lwr2 = poiss_mod$family$linkinv(lwr), 
+         dist_stand = mock_data$dist_stand)
+
+p_low <- predictions_low %>% 
+  ggplot(aes(x = dist_stand, y = fit2)) + 
+  geom_line() + 
+  geom_ribbon(aes(ymin = lwr2, ymax=upr2), alpha = 0.2, col = 'gray80') + 
+  labs(x = '', 
+       y = '', 
+       title = '', 
+       subtitle = "50th quantile") + 
+  theme_classic()
+
+preds2 <- predict(poiss_mod, newdata = mock_data2, type = "link", se.fit = TRUE)
+critval <- 1.96 ## approx 95% CI
+
+predictions_med <- tibble(
+         upr = preds2$fit + (critval * preds2$se.fit),
+         lwr = preds2$fit - (critval * preds2$se.fit),
+         fit = preds2$fit,
+         fit2 = poiss_mod$family$linkinv(fit),
+         upr2 = poiss_mod$family$linkinv(upr),
+         lwr2 = poiss_mod$family$linkinv(lwr), 
+         dist_stand = mock_data2$dist_stand)
+
+p_med <- predictions_med %>% 
+  ggplot(aes(x = dist_stand, y = fit2)) + 
+  geom_line() + 
+  geom_ribbon(aes(ymin = lwr2, ymax=upr2), alpha = 0.2, col = 'gray80') + 
+  labs(x = 'Distance Standardized', 
+       y = '', 
+       title = '', 
+       subtitle = "80th quantile") + 
+  theme_classic()
+
+preds3 <- predict(poiss_mod, newdata = mock_data3, type = "link", se.fit = TRUE)
+critval <- 1.96 ## approx 95% CI
+
+predictions_med <- tibble(
+         upr = preds3$fit + (critval * preds3$se.fit),
+         lwr = preds3$fit - (critval * preds3$se.fit),
+         fit = preds3$fit,
+         fit2 = poiss_mod$family$linkinv(fit),
+         upr2 = poiss_mod$family$linkinv(upr),
+         lwr2 = poiss_mod$family$linkinv(lwr), 
+         dist_stand = mock_data3$dist_stand)
+
+p_high <- predictions_med %>% 
+  ggplot(aes(x = dist_stand, y = fit2)) + 
+  geom_line() + 
+  geom_ribbon(aes(ymin = lwr2, ymax=upr2), alpha = 0.2, col = 'gray80') + 
+  labs(x = '', 
+       y = '', 
+       title = '', 
+       subtitle = "97th quantile") + 
+  theme_classic()
+
+
+gridExtra::grid.arrange(p_low, p_med, p_high, nrow = 1, top = "Predicted Counts\nNegative sentiment held constant")
+```
+
+We notice that at really high values of negative sentiment the relationship between distance from the template and moral vocabulary appears to be positive. We need to take into account, however, that by definition we do not have many cases in such extreme values and therefore there is a lot of uncertainty around the estimate. These are by no means definitive conclusions but they suggest that there is plausibility to the survey results. 
