@@ -37,32 +37,30 @@ library(plot3D)
 library(scatterplot3d)
 library(quanteda)
 theme_set(theme_light())
+```
 
+```{r initial data setup}
 # Load in the conservative data
-c_data <- read_csv("data/conservatives_full.csv")
+c_data <- read_csv("Data/conservatives_full.csv")
 
-#Get rid of the first 2 rows 
-
+# Get rid of the first 2 rows (they don't mean anything)
 c_data <- c_data[-(1:2), ]
 
 # Load pretest data 
-
 p_data <- read_csv("data/pretest.csv")
 
+# Same issue with the rows
 p_data <- p_data[-(1:3), ]
 
 # Load the liberal data 
-
 l_data <- read_csv("data/liberals_complete.csv")
 
 l_data <- l_data[-(1:2),]
 
 # Now bind them together 
-
 data <- rbind(c_data, p_data, l_data)
 
 # Get attention checks for the data 
-
 data <- data %>% 
   mutate(passed_1 = ifelse(ach_1_1 == "extremely harmful", 1, 0), 
          passed_2 = ifelse(ach_2_1 == "not at all immoral", 1, 0), 
@@ -73,18 +71,15 @@ data <- data %>%
          sum_pass = passed_1 + passed_2 + passed_3 + passed_4 + passed_5 + passed_6)
 
 # Now drop cases which did not pass the attention checks 
-
 data <- data %>% 
   filter(sum_pass == 6)
 
 # Create variable that indicates if someone is conservative
-
 data <- data %>% 
   mutate(conservative = ifelse(ideology_1 == 5 | ideology_1 == 6 | ideology_1 == 7, 1, 0)) 
 
 
 # Mutate all main questions so that we get numbers 
-
 data <- data %>% 
   mutate_at(vars(contains("_h_1")), funs(recode(., 
                                    "not at all harmful" = 1, 
@@ -107,19 +102,16 @@ data <- data %>%
 
 
 # Get of of the first set of uninformative columns 
-
 d <- data %>% 
   select(-contains("ach")) %>% 
   select(pkp_h_1:msas_u_1, ideology_1, conservative)
 
 # Now let's create a more amenable dataset 
-
 d <- d %>% 
   mutate(id = 1:n()) %>% 
   select(id, everything()) 
 
 # Rename all variables 
-
 d <- d %>%  
   rename_all(
     funs(str_remove(., "_1"))
@@ -128,7 +120,6 @@ d <- d %>%
 
 
 # Reshape harmful perceptions from wide to long 
-
 d_harm_long <- d %>% 
   select(id, ideology, conservative, contains("_h")) %>% 
   gather(key = "scenario", value = "harm", 4:28) %>% 
@@ -149,17 +140,14 @@ select(id, ideology, conservative, contains("_u")) %>%
   mutate(scenario = str_remove(scenario, "_u$"))
 
 # Now join them 
-
 d_long <- d_harm_long %>% 
   mutate(immoral = d_imm_long$immoral, 
          unexpected = d_un_long$unexpected)
 
 # Load dataset with the deflections 
-
-selected_events <- read_csv("data/full_events.csv")
+selected_events <- read_csv("Data/full_events.csv")
 
 # Create column for abreviations 
-
 events <- c("pch", 
             "pkp", 
             "tmdp", 
@@ -187,24 +175,15 @@ events <- c("pch",
             "thls")
 
 # Create new column 
-
 events_def <- selected_events %>% 
   mutate(scenario = events) %>% 
   select(scenario, def, type, 5:33)
 
 # Add to long dataset 
-
 d_long <- d_long %>% 
   left_join(events_def, by = "scenario")
 
-# Create a variable for negative behavior 
-
-d_long <- d_long %>% 
-  mutate(neg_beh = ifelse(be < 0, 1, 0))
-
-
 # create a summary table for the values of each question 
-
 gd <- d %>% 
   select(-c(id, ideology, conservative)) %>% 
   gather(key = "scenario", 
@@ -242,23 +221,23 @@ gd <- gd %>%
 ```
 ## Introduction
 
-Cultural differences in moral worldviews are well documented in both academic journals and newspaper headlines. The renewed interest in the sociology of morality has been accompanied by an impulse to document these fault-lines [@hitlinNewSociologyMorality2013]. Researchers have shown that practices that are mundane among certain groups cause outrage among others. These cultural differences, however, are aggregates: they are the result of the everyday judgments of individuals who are adept at intuiting what is right and what is wrong. In tracing the variation of moral cultures, we make the assumption that the members of different social groups see immorality in different places. Nonetheless, the process whereby actors come to perceive a practice as immoral remains opaque. In this paper, I shed light on how individuals attribute immorality to events, thus providing more robust cognitive foundations for the sociological study of morality. 
+Cultural differences in moral worldviews are well documented in both academic journals and newspaper headlines. Researchers have shown that practices that are mundane among certain groups cause outrage among others [@hitlinNewSociologyMorality2013; @haidtAffectCultureMorality]. These cultural differences, however, are aggregates: they are the result of the everyday judgments of individuals who are adept at intuiting what is right and what is wrong. In tracing the variation of moral cultures, we make the assumption that the members of different social groups see immorality in different places. Nonetheless, our understanding of the processes whereby actors come to perceive a practice as immoral remains limited. In this paper, I shed light on how individuals attribute immorality and harm to events. 
 
-There is widespread debate about how actors identify and categorize moral transgressions. Currently, one of the most plausible explanation is that we attribute moral wrongdoing through template matching [@scheinTheoryDyadicMorality2018]. In other words, when we perceive an event, we compare it to our idea of what the typical moral transgression looks like. If the perceived event closely matches our cognitive template of an immoral act, then we are likely to view it as a transgression. Even though this theory has gained traction, the evidence to support it remains limited. Here, I provide an attempt to operationalize and directly test it. I take advantage of the fact that the bulk of research on moral cognition has used hypothetical vignettes. Using sociological approaches to measuring social meaning, I can produce “translations” of these vignettes which allow me to examine the connotative meanings of these fictional scenarios. This helps me accomplish two goals: first, I identify shared semantic features amongst the scenarios in order to come up with a principled way of outlining what a prototypical immoral act looks like; second, I calculate the extent to which the vignettes match this template, aiming to shed light on how distance from the exemplar is related to the attribution of immorality. By looking at the underlying semantic attributes of moral scenarios, then, it is possible to provide an empirical test of one of the leading theories of moral decision-making. 
+There is widespread debate about how actors identify and categorize moral transgressions. Currently, one of the most plausible explanations is that we attribute moral wrongdoing through template matching [@scheinTheoryDyadicMorality2018]. In other words, when we perceive an event, we compare it to our idea of what the typical moral transgression looks like. If the perceived event closely matches our cognitive template of an immoral act, then we are likely to view it as a transgression. Even though this theory has gained traction, the evidence to support it remains limited. Here, I provide an attempt to operationalize and directly test it. I take advantage of the fact that the bulk of research on moral cognition has used hypothetical vignettes. Using sociological approaches to measuring social meaning, I can produce “translations” of these vignettes which allow me to examine the connotative meanings of these fictional scenarios. This helps me accomplish two goals: first, I identify shared semantic features among the scenarios in order to come up with a principled way of outlining what a prototypical immoral act looks like; second, I calculate the extent to which the vignettes match this template, aiming to shed light on how distance from the exemplar is related to the attribution of immorality. By looking at the underlying semantic attributes of moral scenarios, then, it is possible to provide an empirical test of one of the leading theories of moral decision-making. 
  
-My argument will have the following structure. First, I will outline the theoretical debates that inform and motivate this analysis. Second, I will explain how we can use sociological approaches to social meaning in order to translate vignettes into a format amenable for the analysis of their underlying semantic features. Third, I will describe the methods and results of the first study, which shows that the translations of the scenarios are interpreted consistently by respondents. Fourth, I discuss the design and findings of study 2, where I use reaction time data to examine whether the attribution of immorality occurs through template matching. Lastly, I will close by discussing the implications and limitations of the study, as well as the potential avenues for research that it opens up. 
+My argument will have the following structure. First, I outline the theoretical debates that inform and motivate this analysis. Second, I explain how we can use sociological approaches to social meaning in order to translate vignettes into a format amenable for the analysis of their underlying semantic features. Third, I describe the methods and results of the first study, which shows that the translations of the scenarios are interpreted consistently by respondents. Fourth, I discuss the design and findings of study 2, where I use reaction time data to examine whether the attribution of immorality occurs through template matching. Fifth, I assess the external validity of the results from Study 1 & 2 by testing them in a large corpus of naturally occurring text. Lastly, I close by discussing the implications and limitations of the analysis, as well as the potential avenues for research that it opens up. 
  
 ## Theoretical Background
 
 ### Towards a unified vision of morality
 
-Although research on how individuals come to perceive actions as immoral has been disjointed, some common ground has been reached. Evidence from different fields suggests that actors do not reach moral judgments through complex logical deliberations, weighing their commitments to universal principles against the immediate implications of their actions [@greenePointandShootMoralityWhy2014; @greeneRiseMoralCognition2015]. Rather, they rely on “gut feelings” to instinctively decide what is right or wrong. We intuitively know what is impermissible, even if we are not capable of articulating why [@haidtIntuitiveEthicsHow2004]. Questions remain, though, about the underlying cognitive processes that make individuals such swift arbiters of immorality, and about how these vary across social contexts. In answering these questions, scholars have generally put forward two types of explanations: one furthers that there are qualitatively different types of moral transgressions, and that actors use distinct cognitive strategies to understand them;  another suggests that moral wrongs are all judged based on one underlying logic.
+Although research on how individuals come to perceive actions as immoral has been disjointed, some common ground has been reached. Evidence from different fields suggests that actors do not reach moral judgments through logical deliberations, weighing their commitments to universal principles against the immediate implications of their actions [@greenePointandShootMoralityWhy2014; @greeneRiseMoralCognition2015]. Rather, they rely on “gut feelings” to instinctively decide what is right or wrong. We intuitively know what is impermissible, even if we are not capable of articulating why [@haidtIntuitiveEthicsHow2004]. Questions remain, though, about the underlying cognitive processes that make individuals such swift arbiters of immorality, and about how these vary across social contexts. In answering these questions, scholars have generally put forward two types of explanations: one furthers that there are qualitatively different types of moral transgressions, and that actors use distinct cognitive strategies to understand them;  another suggests that moral wrongs are all judged based on one underlying logic.
 
-Explanations that contend that morality consists of differentiated domains have emerged as a response to an empirical puzzle: the fact that there are events that individuals find immoral, but which do not involve harm [@haidtAffectCultureMorality]. Dietary and sexual taboos are often cited as examples of these seemingly harmless wrongs. The most prominent theory in this line of work is Moral Foundations Theory (henceforth MFT) [@grahamMoralFoundationsTheory2013]. MFT scholars argue that the diversity of moral judgements is explained by the fact that morality is underpinned by five distinct foundations: authority, fairness, loyalty, purity, and harm. We attribute immorality differently depending on the moral foundation that appears to be breached. For instance, seeing a soccer player bend the rules to their favor is substantively different that watching them deliberately try to injury a rival. Both are immoral acts but while the former evokes normative sentiments about fairness, the latter is concerning because of the harm that might be inflicted on the other player. Variations in moral worldviews arise as individuals and groups emphasize certain foundations – or combinations of foundations – over others [@haidtMoralMindHow2007]. MFT, then, provides a pluralist vision of moral judgement, capable of explaining diversity in moral prohibitions.
+Explanations that contend that morality consists of differentiated domains have emerged as a response to an empirical puzzle: the fact that there are events that individuals find immoral, but which do not involve harm [@haidtAffectCultureMorality]. Dietary and sexual taboos are often cited as examples of these seemingly harmless wrongs. The most prominent theory in this line of work is Moral Foundations Theory (henceforth MFT) [@grahamMoralFoundationsTheory2013]. MFT scholars argue that the diversity of moral judgments is explained by the fact that morality is underpinned by five distinct foundations: authority, fairness, loyalty, purity, and harm. We attribute immorality differently depending on the moral foundation that appears to be breached. For instance, seeing a soccer player bend the rules to their favor is substantively different that watching them deliberately try to injure a rival. Both are immoral acts but while the former evokes normative sentiments about fairness, the latter is concerning because of the harm that might be inflicted on the other player. Variations in moral worldviews arise as individuals and groups emphasize certain foundations – or combinations of foundations – over others [@haidtMoralMindHow2007]. MFT, then, provides a pluralist vision of moral judgment, capable of explaining diversity in moral prohibitions.
 
-A more unified conceptualization of morality – the one that MFT precisely argues against - has regained traction throughout the last decade. This push has been motivated by evidence that shows that the five moral foundations are all highly correlated [@grayDisconfirmingMoralFoundations2015]. This suggests that transgressions are cut from the same cloth and cannot be parceled out into different groups. Gray and Schein [-@scheinTheoryDyadicMorality2018] contend that the unifying dimension of moral decision-making is harm. Their work shows that when individuals are asked to envision immoral acts, they tend to bring up quintessentially harmful practices, and that when asked to explain what makes certain actions immoral, they tend to resort to ideas of harmfulness [@scheinUnifyingMoralDyad2015; @scheinTheoryDyadicMorality2018]. Individuals, thus, judge actions as immoral insofar as they can perceive them as harmful. Perceptions of harm even mediate our understanding of practices where no entities appear to be directly affected: incestual marriages, for instance, are often described as harming the health – the gene pool – of the group [-@scheinTheoryDyadicMorality2018]. Their argument is that, regardless of the superficial differences between moral violations, the central mechanism through which individuals come to see them as immoral is harm. Thus, rather than being based on differentiated logics, moral judgement is underpinned primarily by perceptions of harm.
+A more unified conceptualization of morality – the one that MFT precisely argues against - has regained traction throughout the last decade. This push has been motivated by evidence that shows that the five moral foundations are all highly correlated [@grayDisconfirmingMoralFoundations2015]. This suggests that transgressions are cut from the same cloth and cannot be parceled out into different groups. Gray and Schein [-@scheinTheoryDyadicMorality2018] contend that the unifying dimension of moral decision-making is harm. Their work shows that when individuals are asked to envision immoral acts, they tend to bring up quintessentially harmful practices, and that when asked to explain what makes certain actions immoral, they tend to resort to ideas of harmfulness [@scheinUnifyingMoralDyad2015; @scheinTheoryDyadicMorality2018]. Individuals, thus, judge actions as immoral insofar as they can perceive them as harmful. Perceptions of harm even mediate our understanding of practices where no entities appear to be directly affected: incestual marriages, for instance, are often described as harming the health – the gene pool – of the group [-@scheinTheoryDyadicMorality2018]. Their argument is that, regardless of the superficial differences between moral violations, the central mechanism through which individuals come to see them as immoral is harm. Thus, rather than being based on differentiated logics, moral judgment is underpinned primarily by perceptions of harm.
 
-Now, whether morality is conceived as differentiated or continuous has important implications for our understanding of how individuals come to perceive actions as immoral. The former position operates under the implicit assumption that moral cognition is mostly about classification. The attribution of immorality consists of mapping practices unto the appropriate moral code. Nonetheless, this vision of moral cognition as underpinned by discrete classification is not tenable given current evidence. As current research compels us to adopt a more continuous conceptualization of moral decision-making, we need to find cognitive models that are congruent with such a view. While alternative explanations have emerged, we still lack the empirical grounding to adjudicate their validity. In this study, I address this gap by providing an empirical test for one of the most plausible contemporary theories of moral cognition: the idea that individuals attribute immorality through template matching.
+Now, whether morality is conceived as differentiated or continuous has important implications for our understanding of how individuals come to perceive actions as immoral. The former position operates under the implicit assumption that moral cognition is mostly about a clear-cut classification. The attribution of immorality consists of mapping practices unto the appropriate moral code. Nonetheless, this vision of moral cognition as underpinned by discrete classification is not tenable given current evidence. As current research compels us to adopt a more continuous conceptualization of moral decision-making, we need to find cognitive models that are congruent with such a view. While alternative explanations have emerged, we still lack the empirical grounding to adjudicate their validity. In this study, I address this gap by providing an empirical test for one of the most plausible contemporary theories of moral cognition: the idea that individuals attribute immorality through template matching.
 
 ### Template matching and moral cognition 
 
@@ -266,15 +245,15 @@ Currently, there is a working theory of moral cognition that is congruent with a
 
 Proponents of this theory provide a description of this mental template, but many details remain opaque. Immoral actions, they argue, have a dyadic structure: they involve an intentional agent directing a damaging behavior towards a vulnerable patient [@scheinTheoryDyadicMorality2018]. An event that would resemble such a template would be a calculating criminal murdering a child. When we witness an event, we compare it to this template and assess its immorality accordingly. Though plausible, this definition remains vague. It is unclear how we can define what constitutes a vulnerable victim or a damaging behavior without incurring in tautologies. Therefore, we do not know how to gauge whether an event fits into this template, let alone how to calculate how practices might deviate from it. Thus, even though there is a plausible working definition of the structure of prototypical moral wrongs, we still lack a clear strategy to operationalize it.
 
-Furthermore, the evidence supporting this view of moral cognition is scant. We lack direct empirical tests of whether the attribution of immorality indeed occurs through template matching. As a consequence, it is unclear how we are supposed to conceptualize this process. For instance, it is possible to conceive the relationship between immorality and distance from the exemplar as linear: the further away an event is from our cognitive template, the harder it is for us to perceive it as immoral. However, the relationship could also be parabolic. As events become more distant from our mental template, the attribution of immorality becomes more difficult but only up to one point. After that, practices start to look obviously not immoral. Thus, events that are very far away from our idea of what a typical moral transgression is – such as hugging one’s mom – are quickly flagged as innocuous. While the idea of moral cognition occurring through template matching has gained prominence, we lack even basic understanding about how this process works. My argument is that we can start to build a principled empirical understanding of this process by analyzing the underlying semantic features of moral transgressions.
+Furthermore, the evidence supporting this view of moral cognition is scant. We lack direct empirical tests of whether the attribution of immorality indeed occurs through template matching. As a consequence, it is unclear how we are supposed to conceptualize this process. For instance, it is possible to conceive the relationship between immorality and distance from the exemplar as linear: the further away an event is from our cognitive template, the harder it is for us to perceive it as immoral. However, the relationship could also be parabolic. As events become more distant from our mental template, the attribution of immorality becomes more difficult but only up to one point. After that, practices start to look obviously not immoral. Thus, events that are very far away from our idea of what a typical moral transgression is – such as hugging one’s mom – are quickly flagged as innocuous. While the idea of moral cognition occurring through template matching has gained prominence, we lack basic understanding about how this process works. My argument is that we can start to build a principled empirical understanding of this process by analyzing the underlying semantic features of moral transgressions.
 
 ### The social meanings of moral trangressions 
 
 The central challenge in the effort to test this theory is outlining a principled definition of the prototypical moral violation. An important step towards that goal is to realize that mental templates are eminently social [@hunzakerMappingCulturalSchemas2019; @hunzakerCulturalSentimentsSchemaConsistency2016a]. The cultural landscapes in which we are embedded shape how we envision certain categories, and the exemplars around which they are organized. For instance, recent research suggests that our ideas of what the typical African American [@monkColorPunishmentAfrican2019] or benefit claimant looks like [@hunzakerMappingCulturalSchemas2019; @martinPoliticalPositionSocial2010] vary depending on the social positions we occupy. The key implication here is that we can treat the effort to outline a template of moral transgressions in the same way as scholars have outlined prototypes in other social categories (cf. @bergstrandAdvantagedCauseAffect2019). We can examine the underlying cultural meanings associated with immoral acts in order to look for regularities, piecing together an outline of a prototypical moral transgression. There are two main challenges in this approach: first, we are dealing not with a single entity but with a dyadic structure, consisting of an agent directing a behavior towards an recipient; second, we need to find rigorous measures of cultural meaning that we can map onto these different components. Given fortuitous theoretical overlaps, it is possible to use the dictionaries of affective meanings collected by Affect Control Theory (henceforth ACT) scholars to address these challenges.
 
-ACT is premised upon the idea that individuals act in order to maintain the cultural meanings associated with their identities [@heiseExpressiveOrderConfirming2007]. Due to the central role that meaning plays in this theory, ACT scholars have developed rigorous strategies to approach its measurement and analysis. For the purposes of this paper, it is worth highlighting three ideas that capture ACT’s approach to meaning: first, that identities and behaviors have distinct cultural meanings; second, that these meanings are widely shared amongst members of the same group; and third, that these semantic structures can be reduced to a set of measurable dimensions [@heiseExpressiveOrderConfirming2007; @hunzakerCulturalSentimentsSchemaConsistency2016a]. In order to operationalize the latter, this theory incorporates Osgood et al.’s [-@osgoodCrossculturalUniversalsAffective1975] work, arguing that the meaning of any concept can be effectively distilled to three dimensions: evaluation, potency, and activity. In other words, we need three pieces of information to broadly capture the cultural meaning of a concept: we need to know whether it is good or bad (evaluation), whether it is weak or strong (potency), and whether it is lively or quiet (activity) [@osgoodWhysWherefores1969]. Extensive cross-cultural work has shown that these three dimensions broadly capture connotative meanings, both across cultures and throughout time [@osgoodCrossculturalUniversalsAffective1975].
+ACT is premised upon the idea that individuals act in order to maintain the cultural meanings associated with their identities [@heiseExpressiveOrderConfirming2007]. Due to the central role that meaning plays in this theory, ACT scholars have developed rigorous strategies to approach its measurement and analysis. For the purposes of this paper, it is worth highlighting three ideas that capture ACT’s approach to meaning: first, that identities and behaviors have distinct cultural meanings; second, that these meanings are widely shared among members of the same group; and third, that these semantic structures can be reduced to a set of measurable dimensions [@heiseExpressiveOrderConfirming2007; @hunzakerCulturalSentimentsSchemaConsistency2016a]. In order to operationalize the latter, this theory incorporates Osgood et al.’s [-@osgoodCrossculturalUniversalsAffective1975] work, arguing that the meaning of any concept can be effectively distilled to three dimensions: evaluation, potency, and activity. In other words, we need three pieces of information to broadly capture the cultural meaning of a concept: we need to know whether it is good or bad (evaluation), whether it is weak or strong (potency), and whether it is lively or quiet (activity) [@osgoodWhysWherefores1969]. Extensive cross-cultural work has shown that these three dimensions broadly capture connotative meanings, both across cultures and throughout time [@osgoodCrossculturalUniversalsAffective1975].
 
-Using these dimensions, it is possible to collect rigorous measures of the meanings that groups attach to concepts. These aggregate meanings are collected by asking respondents to rate concepts on three, nine-point scales corresponding to each of the dimensions [@heiseCulturalVariationsSentiments2014]. These measures are then aggregated, and the average is computed, yielding the evaluation, potency, and activity (EPA) values for each concept. Importantly, these EPA profiles are accurate and informative. Babies, for instance, are very good, very powerful, and somewhat lively, while murderers are depicted as very bad, very powerful, and slightly active. This framework, then, helps render cultural meanings measurable and formalizable. As part of their research agenda, ACT researchers have collected large dictionaries of affective meanings. I take advantage of these dictionaries to map reliable measures of cultural meaning onto the different components of moral transgressions.
+Using these dimensions, it is possible to collect rigorous measures of the meanings that groups attach to concepts. These aggregate meanings are collected by asking respondents to rate concepts on three, nine-point scales corresponding to each of the dimensions [@heiseCulturalVariationsSentiments2014]. These measures are then aggregated, and the average is computed, yielding the evaluation, potency, and activity (EPA) values for each concept. Importantly, these EPA profiles are accurate and informative. Babies, for instance, are very good, very powerless, and somewhat lively, while murderers are depicted as very bad, very powerful, and slightly lively. This framework, then, helps render cultural meanings measurable and formalizable. As part of their research agenda, ACT researchers have collected large dictionaries of affective meanings. I take advantage of these dictionaries to map reliable measures of cultural meaning onto the different components of moral transgressions.
 
 Research on moral cognition has primarily used fictional scenarios to examine how actors assess immorality. In these studies, respondents are presented with a series of hypothetical events and they must decide how immoral or harmful they are. These vignettes tend to share a dyadic grammatical structure much like the one discussed above: they often involve an actor directing a behavior towards a recipient. Incidentally, this structure (actor-behavior-object) is the main unit of analysis of ACT. This means that the dictionaries of affective meanings contain many of the terms we would need to translate widely used fictional scenarios into a format that allows for the analysis of their connotative meanings. Let me provide an example. A scenario that has been shown [@cliffordMoralFoundationsVignettes2015] to be interpreted reliably is:
 
@@ -284,9 +263,9 @@ Ascribing appropriate EPA profiles to each component of the sentence, we can pro
 
 >Teacher [E = 2.5; P = 2.31; A = 0.32] hits [E = -2.66; P = 1.30; A = 2.12] lazy student [E = -0.42; P = -0.76; A = -1.56]
 
-This format provides a wealth of additional information about these vignettes. Much like an x-ray, the translation allows to go below the level of denotative meanings and to examine the underlying semantic building blocks of the event. This information, in turn, is useful in the effort to understand template matching in the context of moral cognition. For instance, it is possible to examine what semantic features play an important role in the attribution of immorality. Furthermore, we can look for identifiable attributes of typically harmful actions – such as murder – and prototypically vulnerable victims – such as children. Thus, by going down to the level of connotative meanings, we gain valuable pieces of information that will prove essential for understanding the relationship between moral cognition and template matching. 
+This format provides a wealth of additional information about these vignettes. Much like an x-ray, the translation allows to go below the level of denotative meanings and to examine the underlying building blocks of the event. This information, in turn, is useful in the effort to understand template matching in the context of moral cognition. For instance, it is possible to examine what semantic features play an important role in the attribution of immorality. Furthermore, we can look for identifiable attributes of typically harmful actions – such as murder – and prototypically vulnerable victims – such as children. Thus, by going down to the level of connotative meanings, we gain valuable pieces of information that will prove essential for understanding the relationship between moral cognition and template matching. 
 
-In the following two studies, I use this semantic approach to assess the prototypicality of moral transgressions and to analyze how deviations from those regularities shape moral decision-making. In Study 1, I analyze which semantic attributes – e.g. the agent’s evaluation or the object’s activity – are most informative for understanding the attribution of immorality. This, in turn, helps me reach a principled formalization of what the template of an immoral act looks like. In Study 2, I examine if an event’s distance from said template is predictive of how long it takes individuals to categorize it as immoral or harmful. Using reaction time data, then, I provide a test of whether the attribution of immorality occurs through template matching. 
+In the following studies, I use this  approach to assess the prototypicality of moral transgressions and to analyze how deviations from those regularities shape moral decision-making. In Study 1, I analyze which semantic attributes – e.g. the agent’s evaluation or the object’s activity – are most informative for understanding the attribution of immorality. This, in turn, helps me reach a principled formalization of what the template of an immoral act looks like. In Study 2, I examine if an event’s distance from said template is predictive of how long it takes individuals to categorize it as immoral or harmful. Using reaction time data, then, I provide a test of whether the attribution of immorality occurs through template matching. In Study 3, I derive hypotheses from the previous analyses and use natural language processing tools to test them in a large corpus of text, comprised of all Vox articles published before March 21st of 2017 (the dataset was compiled by Elena Zheleva, and it's available *here*). This allows me to assess the external validity of the results attained in the first two studies.  
 
 ## Study 1 
 
@@ -294,13 +273,13 @@ In the following two studies, I use this semantic approach to assess the prototy
 
 The data for this study was collected through the Prolific platform. Prolific is a crowdsourcing website that allows researchers to connect with participants interested in completing different types of tasks. This platform has advantages over its counterparts: it focuses on data quality and has a replenishing pool of participants [@peerTurkAlternativePlatforms2017]. The latter is important because it ensures that respondents are not so familiar with surveys and experiments that completing such tasks becomes a purely mechanistic endeavor. In total, I reached out to 205 participants and, after removing cases with missed attention checks, the total number of usable responses was 194. 
 
-For this study, I translated 25 widely used vignettes into the format that allows me to explore their connotative meanings. In order to compile this list, I drew on the work of Gray and Keeney [-@grayImpureJustWeird2015] and Clifford et. al. [-@cliffordMoralFoundationsVignettes2015]. I chose scenarios that had been previously used and that I could translate using ACT’s dictionaries of meaning. Importantly, I also decided to include five scenarios for each of the five moral foundations. Although the idea that moral wrongs belong to distinct categories has been recently criticized, it remains useful to examine whether systematic differences exist. The full list of translations is provided in the supplemental materials. Each participant was presented with the 25 translated scenarios and asked to rate how immoral, harmful, and unexpected they were. They provided their ratings using five-point Likert scales that went from, for example, “not harmful at all” to “extremely harmful”. The decision to include these three scales was based on previous work, which had examined these dimensions [@grayImpureJustWeird2015; @scheinTheoryDyadicMorality2018]. 
+For this study, I translated 25 vignettes into the format that allows me to explore their connotative meanings. In order to compile this list, I drew on the work of Gray and Keeney [-@grayImpureJustWeird2015] and Clifford et. al. [-@cliffordMoralFoundationsVignettes2015]. I chose scenarios that had been previously used and that I could translate using ACT’s dictionaries of meaning. Importantly, I also decided to include five scenarios for each of the five moral foundations. Although the idea that moral wrongs belong to distinct categories has been recently criticized, it remains useful to examine whether systematic differences exist. The full list of translations is provided in the supplemental materials. Each participant was presented with the 25 translated scenarios and asked to rate how immoral, harmful, and unexpected they were. They provided their ratings using five-point Likert scales that went from, for example, “not harmful at all” to “extremely harmful”. The decision to include these three scales was based on previous work, which had examined these dimensions [@grayImpureJustWeird2015; @scheinTheoryDyadicMorality2018]. 
 
 This study has two main goals: first, to confirm that the translations are interpreted appropriately and that they produce results that are consistent with previous findings; second, to examine which semantic features have the biggest impact in perceptions of immorality. In order to accomplish the former, I compare the average immorality rating of each scenario with its harmfulness and unexpectedness ratings. Previous work suggests that both relationships should be positive. To address the second goal, I fit cross-classified, multi-level models predicting immorality ratings on the event’s semantic components – like actor’s evaluation or object’s potency. These models include varying intercepts for individuals and scenarios in order to account for systematic differences between events and respondents. The results will give me a principled basis to reach a formal definition of a prototypical moral transgression. 
 
 ### Results
 
-Figure 1 shows the relationship between the average immorality of each scenario and its average harmfulness and average unexpectedness. The results further reaffirm the close relationship between immorality and harm. Moreover, the positive relationship between immorality and unexpectedness echoes the idea that severe transgressions tend to be perceived as more unexpected because they often entail the breaching of social norms. For the purposes of this study, the most important point is that the translated scenarios are interpreted consistently. There are encouraging patterns that are consistent with findings in the literature: the “harm” transgressions tend to be rated as the most severe, while the “purity” violations rank amongst the most unexpected. This suggests that there was not a significant loss of information when the vignettes were translated into the new format.
+Figure 1 shows the relationship between the average immorality of each scenario and its average harmfulness and average unexpectedness. The results further reaffirm the close relationship between immorality and harm. Moreover, the positive relationship between immorality and unexpectedness echoes the idea that severe transgressions tend to be perceived as more unexpected because they often entail the breaching of social norms. For the purposes of this study, the most important point is that the translated scenarios are interpreted consistently. There are encouraging patterns that are consistent with findings in the literature: the “harm” transgressions tend to be rated as the most severe, while the “purity” violations rank among the most unexpected. This suggests that there was not a significant loss of information when the vignettes were translated into the new format.
 
 In order to select the most informative model, I use both AIC and BIC, and the results are available on the supplemental materials. Across the board, the most informative model is a cross-classified model that includes all semantic features but that foregoes additional covariates, such as the gender or political ideology of the respondent. Figure 2 shows the coefficient plots for two models. In the second model, I exclude the so-called “purity” scenarios from the analysis, following previous literature that has argued that these transgressions are distinctive, either because they a fundamentally different type of violation or simply because they are unconventional. Both models suggest that there are three semantic features that are particularly informative when considering the immorality of an event: the behavior’s evaluation, the behavior’s potency, and the object’s potency. While only the coefficient for behavior potency reaches conventional levels of statistical significance in the first model, all three coefficients become significant in the model that excludes the purity transgressions. This reaffirms the idea that these violations might indeed have idiosyncratic semantic structures, though – as it will be discussed below – it does not necessarily imply that they belong to a distinct category of moral wrongs. 
 
@@ -310,7 +289,7 @@ Furthermore, establishing the importance of these three features allows me to pl
 
 >A person kills a child. 
 
-The second reason why building such a three-dimensional space is important is because it allows me to calculate distance between the scenarios and the template defined above. This is the key piece of information that helps me test whether template matching mediates the attribution of immorality. 
+The second reason why building such a three-dimensional space is important is because it allows me to calculate distance between the scenarios and the template defined above. This is the key piece of information that helps me test whether template matching mediates the attribution of immorality and/or harmfulness. 
 
 ```{r}
 
@@ -391,7 +370,7 @@ legend('top', legend = levels(events_def$type_num),
 
 The data for this study was also collected through the Prolific platform. I reached out to a total of 200 participants and, after controlling for missed attention checks, there were a total 184 usable responses. In this study, I asked participants to categorize the same 25 scenarios as either immoral or not immoral, harmful or harmless. For each question, the scenario appeared in the middle of the screen and the dichotomous categories were shown at the bottom, on opposite sides of the page. Using their keyboards, the participants chose the category to which they think the event belongs. The outcome variable of interest is the time it takes respondents to categorize the violations. Reaction time here is meant to stand as a proxy for cognitive effort, with higher times reflecting that the categorization task is more difficult [@grayImpureJustWeird2015; @mooreFastSlowSociological2017]. 
 
-Each participant had to classify all scenarios on two dimensions and, therefore, I have a total of 9200 recorded times. To ensure that I could capture the initial reactions as reliably as possible, I designed the questionnaire so that participants had a ten-second limit to classify each scenario (with a one-second pause between questions). Out of all the responses, only 44 were above 10 seconds and 22 were below 1 second. Given that these data most likely reflect misclicks or technical difficulties, I used median imputation to replace these values. I ran the same analyses after deleting these observations with no appreciable differences in the results. 
+Each participant had to classify all scenarios on two dimensions and, therefore, I have a total of 9200 recorded times. To ensure that I could capture the initial reactions as reliably as possible, I designed the questionnaire so that participants had a ten-second limit to classify each scenario (with a one-second pause between questions). Out of all the responses, only 44 were above 10 seconds and 22 were below 1 second. Given that these data most likely reflect misclicks or technical difficulties, I used median imputation to replace these values. I also ran the same analyses after deleting these observations with no appreciable differences in the results. 
 
 The main goal of this analysis is to examine the relationship between distance from the prototypical moral transgression – a person kills a child – and the time it takes individuals to categorize the scenarios. I define distance from the template as the Euclidean distance between that point and a particular event in the three-dimensional space presented in Figure 3. Thus, if the prototypical transgression is $p$, then distance for scenario $i$ will be defined as: 
 
@@ -405,7 +384,9 @@ The most informative model, in this case, is the one that depicts a quadratic re
 
 The model suggests that the scenarios that are most difficult to categorize are those that lie at a middling distance from the prototypical immoral act. This relationship between ambiguity and reaction time is also found in other parts of the data. For example, Figure 5 shows the predictions of a cross-classified, multi-level model that regresses reaction time of harmfulness on the proportion of participants who classified that event as harmful. I provide a full coefficient table in the supplemental materials, but the most important point is that the relationship is parabolic: the events that had the most variance in how they were categorized took the longest to be classified. This finding furthers validates the decision to model the relationship between distance from the prototype and reaction as quadratic. 
 
-A concern with these results is that most of the scenarios that are very distant from the prototype are the so-called purity scenarios. Study 1 shows that these scenarios are consistently ranked amongst the most harmful. Thus, it is possible that these transgressions are driving the downward turn of the quadratic effect. Nonetheless, I ran the same models taking these scenarios out of the sample and the quadratic relationship still held; these results are available in the supplemental materials. More interestingly, however, it is possible to fit a logistic regression predicting whether an event was classified as harmful using distance from the prototype as the main independent variable. Figure 6 shows the coefficients of this multi-level, cross-classified model. Increases in distance from the prototype lead to considerably lower odds of an event being classified as harmful. Again, let me re-emphasize that the so-called purity scenarios are both quite distant from the prototype and yet are very harmful. Thus, the relationship evidenced in Figure 4 could be said to occur not because of these scenarios but rather in spite of them. As it will be discussed below, this fact carries important implications.  
+A concern with these results is that most of the scenarios that are very distant from the prototype are the so-called purity scenarios. Study 1 shows that these scenarios are consistently ranked among the most harmful. Thus, it is possible that these transgressions are driving the downward turn of the quadratic effect. Nonetheless, I ran the same models taking these scenarios out of the sample and the quadratic relationship still held; these results are available in the supplemental materials. More interestingly, however, it is possible to fit a logistic regression predicting whether an event was classified as harmful using distance from the prototype as the main independent variable. Figure 6 shows the coefficients of this multi-level, cross-classified model. Increases in distance from the prototype lead to considerably lower odds of an event being classified as harmful. Again, it is important to re-emphasize that the so-called purity scenarios are both quite distant from the prototype and yet are very harmful. Thus, these scenarios are "out of place": their connotative structures do not seem to correspond to the harmfulness that participants attribute to them. 
+
+This "mismatch" between connotative structures and perceived harm speaks directly to an important debate within the study of morality. A great deal of research within this line of work has revolved around the so-called harmless wrongs [@tepeHarmfulnessImpurityMoral2019]. As noted above, scholars have recently argued that these acts are still perceived through the lens of harm. Indeed, the results of Study 1 echo this idea: the so-called purity transgressions rank among the most harmful. Yet, the mismatch above suggests that these events might be indeed distinctive; harmless wrongs are "weird" - in Gray and Schein's words - but not only because they are unusual but because their connotative meanings do not fit with their perceived harmfulness. The challenge, then, is to explain this incongruence. One explanation that can be put forward is that there are different channels for “harmification” [@scheinMoralizationHarmificationDyadic2016]. While perceiving the harmfulness of events that are very close to the prototype might be intuitive, doing the same for practices that are far away might require a longer process of social cultivation. Therefore, it might be necessary for groups to build additional moral scaffolding – such as taboos and mechanisms of public shame – in order to bring events that are very far away from the template into the realm of harm. I will build upon this explanation, which remains speculative, to outline the hypotheses that will serve to test the external validity of the results obtained so far. 
 
 ```{r, include=FALSE, message=FALSE}
 
@@ -829,14 +810,195 @@ plot_model(m4, sort.est = T, title = "Is an event harmful?", show.values = T)
 ![](figures/quadratic_model.png)
 
 ![](figures/prop_harm_model.png)
+## Study 3 
+
+While their results are insightful, the above studies share an important limitation: the events considered have really particular characteristics. Not only do they have similar semantic structures, but they were all curated to represent well-established moral violations. Study 1 and Study 2, then, seek to examine a general process of template matching using a homogeneous and idiosyncratic sliver of events. To rectify this, I examine whether distance from the template is a useful piece of information when analyzing a much wider set of events; a set that is not curated by researchers interested in moral violations, but rather extracted from naturally occurring text. 
+
+In order to translate the findings into hypotheses that can be tested using natural language processing tools, I focus on sentiment analysis. While a host of different research agendas tend to fall under this rubric, they are united in the effort to infer the emotional valence of written text. The results from Study 1 & 2 suggest that events that are close to the template should be surrounded by more negative emotional content than those that are distant from it. The first hypothesis, then, is: 
+
+> Hyp. 1: The negative sentiment of the text surrounding an event should be negatively related to how distant said event is from the moral template. 
+
+This relationship is not as obvious as it might seem at first. Recall that the semantic attributes that go into calculating distance from the template are the behavior's evaluation, the behavior's potency, and the object's potency. There's only one measure that would map to goodness-badness directly. Therefore, identifying a relationship between distance from the template and negative sentiment would not be trivial.
+
+A perhaps more interesting hypothesis relates to the speculative explanation about differential "harmification" outlined above. This explanation suggests that additional work is needed to bring events that are very distant from the prototype into the realm of harm. In text, we can conceptualize this additional work as moral language: language that is used to set normative standards, and to denounce or even justify deviations from such standards. I elaborate on this operationalization below, but what is important here is to outline the statistical relationship that should be expected given the results above. In general, we should expect such moral vocabulary to appear at higher rates around events that are close to the template. However, there should be an interaction effect between distance from the template and negative sentiment such that, for events that are surrounded by really negative sentiment, the relationship between distance and the rate of moral vocabulary should be positive. Events like the so-called purity scenario, which are considered both really negative and really distant from the template, should more moral scaffolding around them. The second hypothesis, thus, is: 
+
+> Hyp. 2: In considering the count of moral vocabulary around an event, there should be a positive interaction effect between negative sentiment and distance from the moral template. 
+
+### Data and Methods 
+
+For this analysis, I use a dataset consisting of all articles published by the news site Vox before the 21st of March 2017. This dataset was collected by Elena Zhelenko and made available to the public through the social platform data.world. In total, the corpus contains 23022 articles published between 2014 and 2017. These data prove particularly valuable for the problem at hand because Vox covers a wide array of topics, from economics to public policy and entertainment. This ensures that I am able to capture a relatively wide group of events, significantly broadening the scope of the studies above. 
+
+In order to test the hypotheses, it is necessary to extract events from these articles; events that can be comparable in structure to the ones used in the previous studies. The automated identification of subject-verb-object triplets in naturally occurring text is an area of active research and the last few years have seen a proliferation of user-friendly and powerful tools for this task. In this project, I use the Python libraries spaCy and textacy, which offer automated parts-of-speech recognition tools that allow to identify and extract these triplets. As a concrete example, take the following sentence from one of the articles:
+
+> By the end of September 2013, the Obama administration had deported 1.83 million immigrants.
+
+After extracting the subject-verb-object triplet, we are left with the following: 
+
+> The Obama Administration had deported immigrants. 
+
+This sentence has a familiar structure: it consists of an agent directing a behavior towards an object. This common structure means that it is possible to map the EPA values collected by affect control theorists to the extracted triplets, provided that the definitions of their components are in the existent dictionaries. Thus, using tools for automated parts-of-speech recognition, it is possible to identify a set of the subject-verb-objects triplets that exist in the articles. These units, in turn, have a similar semantic structure to the events used in the studies above, providing a much broader and diverse testing ground to assess the external validity of the results. 
+
+After extracting all recognizable triplets from each article, there was a total of 522423 such events. I then filtered these triplets to identify the events for which there were existent EPA values. Here, it is important to recall that the measure of distance used in study 2 takes into account the EPA scores of the behavior and the object. Therefore, these were the two components I took into account when mapping EPA scores to the identified triplets. The resulting data-set contains 10274 triplets, spanning 6477 articles, for which the necessary EPA scores are available. This means that I can map the affective meanings onto these triplets, which in turn allows me to calculate their distance to the moral template. 
+
+To operationalize the notion of "moral scaffolding", I compiled a dictionary of moral vocabulary. As a starting point, I used the "general morality" section of the Moral Foundations Theory dictionary, focusing on the negative terms. I then proceeded to find appropriate synonyms in order to have a more comprehensive list. The final dictionary consists of 169 terms and it is made up of words that are used to describe norms and duties (e.g. "integrity"), others that are used to denounce (e.g. "atrocious"), and words that are implemented to justify (e.g "alibi", "condone"). This operationalization is by no means perfect, but it is an effective tool to detect the presence of moral scaffolding - explanations, assertions and/or denunciations about what ought and should not be done - in text. The results above suggest that distance from the moral template should be informative for predicting the amount of words from this dictionary that occur around a given event. 
+
+Hypothesis one posits a negative relationship between how distant an event is from the moral template and the negative sentiment of the text around said event. To measure the sentiment around a given event, I first extract an excerpt of text consisting of the fifty words prior to the first word of the triplet and the fifty words following its last. Then, I use the NLTK library sentiment analyzer - VADER - to compute the sentiment for the desired excerpt. Having the sentiment scores for all triplets, I conduct a linear regression, where the outcome variable is negative sentiment and the main explanatory variable is the event's distance from the prototype. Evidencing a negative relationship would lend credibility to the results of the previous studies. 
+
+To test the second hypothesis, I use the same excerpts of text around each event, and count the number of words that also appear in the compiled dictionary of moral vocabulary described above. Before checking for matches, the words in both the excerpts and the dictionary are lemmatized and stemmed. This helps identify overlaps, even if modified versions or alternative spellings of the words are used. In this analysis, the outcome variable is the amount of words in each excerpt that coincide with the terms in the dictionary. Given that this is a count variable, a Poisson regression here would be the most appropriate. Thus, I regress the count of matches on the event's distance from the template, the negative sentiment surrounding it, and an interaction between these two terms. 
+
+### Results 
+
+Figure 7 shows a coefficient plot for a simple linear regression with the negative sentiment around the event as the outcome variable and its distance from the moral template as the explanatory variable. The relationship lends plausibility to Hypothesis 1; a unit increase in distance from the prototype results in a 0.3 standard deviations decrease in negative sentiment. As events move away from the moral template, there is less negative sentiment around them.
+
+The analysis for Hypothesis 2 also shows supportive evidence. Figure 8 depicts a coefficient plot for the Poisson regression, where the dependent variable is the count of moral terms around an event. It is immediately noticeable that all coefficients are in the direction we would expect given the results above. As the negative sentiment around events increases, so does the count of moral vocabulary around them. Most of the terms in the compiled dictionary have negative connotations, so it is unsurprising to see this relationship. Nonetheless, the other two coefficients are perhaps more insightful. As distance from the template increases, the rate at which we find moral words decreases, as Gray and Schein's (2018) theory would suggest. The crucial coefficient here, however, is the interaction term between distance from the template and negative sentiment: the positive coefficient means that, in triplets that are very negative, we should expect the relationship between distance from the template and the count of moral terms to actually be positive. This result lends credence to the notion that events that are very negative and yet very far away from the moral template - like the so-called purity violations - should have more "moral scaffolding" around them. It is important to take into account, however, that by definition there are not too many cases in such extreme values of negative sentiment and that, therefore, we need to be cautious about the conclusions we can draw from these results. While these insights are by no means definitive, they are suggestive: they add plausibility to the survey results and elucidate a possible explanation for the mismatch between the perceived harmfulness and semantic structure of the so-called harmless wrongs. 
+
+
+```{r}
+# Get the datasets in 
+vox_articles <- read_csv('Data/vox_articles.csv')
+triplets_sentiment <- read_csv("Data/triplets_full.csv")
+dictionary <- read_csv("Data/FullSurveyorUSMeans.csv")
+
+# I need to clean the dictionary a bit before we do the matching 
+dictionary <- dictionary %>% 
+  mutate(term = term %>% tolower(.) %>% str_replace_all(., "_", " "))
+
+# Empty matrix for the loop 
+epa_matrix <- matrix(NA, nrow(triplets_sentiment), 6)
+
+for (x in 1:nrow(triplets_sentiment)) {
+
+match_obj <- match(triplets_sentiment$clean_objs[x], dictionary$term)
+match_verb <- match(triplets_sentiment$clean_verbs[x], dictionary$term)
+epa_matrix[x,1:3] <- dictionary[match_obj, 2:4] %>% as.matrix()
+epa_matrix[x,4:6] <- dictionary[match_verb, 2:4] %>% as.matrix
+
+
+}
+
+# Rename resulting matrix 
+colnames(epa_matrix) <- c("oe", "op", "oa", "be", "bp", "bo")
+
+
+df <- cbind(triplets_sentiment, epa_matrix)
+
+# Now calculate the Euclidean distance 
+eucl_dist_prot <- function(x) { 
+  op <-  df[x, 'op'] 
+  be <-  df[x, 'be'] 
+  bp <-  df[x, 'bp']
+  
+  # Formula   
+  # The values of the prototype are always the ones the events are compared against
+  distance <- sqrt(((-1.14) - op)^2 + ((-4.26) - be)^2 + (1.95 - bp)^2)
+  return(as.double(distance))
+}
+
+distances_prot <- map_dbl(1:nrow(df), eucl_dist_prot)
+
+# Add to the main dataframe 
+df <- df %>% 
+  mutate(distances_prot = distances_prot) %>% 
+  mutate(dist_stand = as.vector(scale(distances_prot)), 
+         comp_stand = as.vector(scale(compound)), 
+         neg_stand = as.vector(scale(negative)))
+
+first_model <- lm(neg_stand ~ dist_stand, data = df) 
+sjPlot::tab_model(first_model)
+
+poiss_mod <- glm(moral_count ~ dist_stand*neg_stand, data = df, family = "poisson") 
+sjPlot::tab_model(poiss_mod)
+
+mock_data <- tibble(index = 1:1e3, 
+                    neg_stand = rep(quantile(df$neg_stand, 0.5), 1000), 
+                    dist_stand = seq(from = min(df$dist_stand), to = max(df$dist_stand), length.out = 1000))
+mock_data2 <- tibble(index = 1:1e3, 
+                     neg_stand = rep(quantile(df$neg_stand, 0.90), 1000), 
+                     dist_stand = seq(from = min(df$dist_stand), to = max(df$dist_stand), length.out = 1000))
+mock_data3 <- tibble(index = 1:1e3, 
+                     neg_stand = rep(quantile(df$neg_stand, 0.97), 1000), 
+                     dist_stand = seq(from = min(df$dist_stand), to = max(df$dist_stand), length.out = 1000))
+
+preds1 <- predict(poiss_mod, newdata = mock_data, type = "link", se.fit = TRUE)
+critval <- 1.96 ## approx 95% CI
+
+predictions_low <- tibble(
+         upr = preds1$fit + (critval * preds1$se.fit),
+         lwr = preds1$fit - (critval * preds1$se.fit),
+         fit = preds1$fit,
+         fit2 = poiss_mod$family$linkinv(fit),
+         upr2 = poiss_mod$family$linkinv(upr),
+         lwr2 = poiss_mod$family$linkinv(lwr), 
+         dist_stand = mock_data$dist_stand)
+
+p_low <- predictions_low %>% 
+  ggplot(aes(x = dist_stand, y = fit2)) + 
+  geom_line() + 
+  geom_ribbon(aes(ymin = lwr2, ymax=upr2), alpha = 0.2, col = 'gray80') + 
+  labs(x = '', 
+       y = '', 
+       title = '', 
+       subtitle = "50th quantile") + 
+  theme_classic()
+
+preds2 <- predict(poiss_mod, newdata = mock_data2, type = "link", se.fit = TRUE)
+critval <- 1.96 ## approx 95% CI
+
+predictions_med <- tibble(
+         upr = preds2$fit + (critval * preds2$se.fit),
+         lwr = preds2$fit - (critval * preds2$se.fit),
+         fit = preds2$fit,
+         fit2 = poiss_mod$family$linkinv(fit),
+         upr2 = poiss_mod$family$linkinv(upr),
+         lwr2 = poiss_mod$family$linkinv(lwr), 
+         dist_stand = mock_data2$dist_stand)
+
+p_med <- predictions_med %>% 
+  ggplot(aes(x = dist_stand, y = fit2)) + 
+  geom_line() + 
+  geom_ribbon(aes(ymin = lwr2, ymax=upr2), alpha = 0.2, col = 'gray80') + 
+  labs(x = 'Distance Standardized', 
+       y = '', 
+       title = '', 
+       subtitle = "80th quantile") + 
+  theme_classic()
+
+preds3 <- predict(poiss_mod, newdata = mock_data3, type = "link", se.fit = TRUE)
+critval <- 1.96 ## approx 95% CI
+
+predictions_med <- tibble(
+         upr = preds3$fit + (critval * preds3$se.fit),
+         lwr = preds3$fit - (critval * preds3$se.fit),
+         fit = preds3$fit,
+         fit2 = poiss_mod$family$linkinv(fit),
+         upr2 = poiss_mod$family$linkinv(upr),
+         lwr2 = poiss_mod$family$linkinv(lwr), 
+         dist_stand = mock_data3$dist_stand)
+
+p_high <- predictions_med %>% 
+  ggplot(aes(x = dist_stand, y = fit2)) + 
+  geom_line() + 
+  geom_ribbon(aes(ymin = lwr2, ymax=upr2), alpha = 0.2, col = 'gray80') + 
+  labs(x = '', 
+       y = '', 
+       title = '', 
+       subtitle = "97th quantile") + 
+  theme_classic()
+
+
+gridExtra::grid.arrange(p_low, p_med, p_high, nrow = 1, top = "Predicted Counts\nNegative sentiment held constant")
+```
+
 
 ## Discussion
 
-At a general level, this study provides a novel technique for analyzing moral transgressions. As mentioned above, the majority of work on moral cognition has used hypothetical scenarios to elicit moral judgments from participants [@cliffordIndividualDifferencesGroup2017]. In this paper, I show that we gain valuable additional information by going below the level of denotative meanings and analyzing the underlying semantic structures of these vignettes. What makes it possible to access these connotative meanings is the existence of large repositories of empirically validated semantic profiles collected by ACT scholars. We can use these dictionaries to translate fictional vignettes into formats that allow us to explore their semantic structures. Doing so yields insightful findings. For instance, Study 1 shows that, echoing Gray and Schein’s [-@scheinTheoryDyadicMorality2018] arguments, transgressions have shared regularities: they involve a negative and potent behavior directed towards a weak object. Recall that, according to these authors, the template of a moral wrong involves an intentional actor directing a damaging behavior towards a vulnerable patient. In this study, I am able to bring rigor to this definition: a damaging behavior could be considered an action which is low on evaluation but high on potency; a vulnerable patient could be described as an actor who has a low potency score.  
+At a general level, this study provides a novel technique for analyzing moral transgressions. As mentioned above, the majority of work on moral cognition has used hypothetical scenarios to elicit moral judgments from participants [@cliffordIndividualDifferencesGroup2017]. In this paper, I show that we gain valuable additional information by going below the level of denotative meanings and analyzing the underlying semantic structures of these vignettes. What makes it possible to access these connotative meanings is the existence of large repositories of empirically validated semantic profiles collected by ACT scholars. We can use these dictionaries to translate fictional vignettes into formats that allow us to explore their semantic structures. Doing so yields insightful findings. For instance, Study 1 shows that, echoing Gray and Schein’s [-@scheinTheoryDyadicMorality2018] arguments, transgressions have shared regularities: they involve a negative and potent behavior directed towards a weak object. Recall that, according to these authors, the template of a moral wrong involves an intentional actor directing a damaging behavior towards a vulnerable patient. In this study, I am able to bring rigor to this definition: a damaging behavior could be considered an action which is low on evaluation but high on potency; a vulnerable patient could be described as an actor who has a low potency score. 
 
-By establishing these regularities, I am able to outline a formal definition of what the template of an immoral act looks like and to calculate deviations from said template. Finding important semantic dimensions for the attribution of immorality helps me place the scenarios on a Cartesian plane defined by those dimensions. By “maximizing” the values on these dimensions, I can represent the prototypical moral wrong as a point in this space and, therefore, I can calculate how distant or close the scenarios are from this template. This allows me to directly test the proposition that moral cognition occurs through template matching. The results from Study 2 show that distance from the template is indeed informative of how long it takes individuals to classify events as harmful. Interestingly, these findings also suggest how this relationship should be understood, a point that Gray and Schein [-@scheinTheoryDyadicMorality2018] overlook. The relationship is quadratic: as distance increases reaction time increases, but only up to a point. Individuals are quick to classify events that are very close or far apart from the template. Events that lie at a middling distance are more ambiguous and take longer to be perceived as harmful. These findings, then, provide empirical evidence for the notion that template matching mediates moral cognition, but also give a clearer idea of how this process occurs. 
+Furthermore, Study 3 shows that this technique can extended beyond fictional vignettes to naturally occurring text. Using tools from computational natural language processing, it is possible to extract subject-verb-object triplets from text corpora. These triplets, in turn, have the same grammatical structure, which allows for their "translation" into EPA scores. The results from Study 3 - especially the analysis around Hypothesis 1 - show that translating these events yields insightful and expected results, thus lending credibility to the external validity of the survey findings. The ability to map connotative meanings to naturally occurring text is powerful, opening up the possibility of testing a host of hypotheses about morality. The possibilities increase further when we consider that there is currently an active stream of research that attempts - quite successfully - to leverage machine learning techniques to derive EPA scores for terms that are not in the collected dictionaries. This would open the gates for exploring the connotative structures underpinning moral decision-making in a substantial amount of corpora, across cultures and throughout time. 
 
-These studies also shed light on one of the most central debates within the study of moral cognition. A great deal of research within this line of work has revolved around the question of whether there are such things as harmless wrongs [@tepeHarmfulnessImpurityMoral2019]. These scenarios tend to be associated with the “purity” foundation: they often involve sexual or dietary taboos. As noted above, scholars have recently argued that these acts are still perceived through the lens of harm. Indeed, the results of Study 1 echo this idea: the so-called purity transgressions ranked amongst the most harmful. Yet, the findings of Study 2 compel us to rethink the distinctiveness of these scenarios. They are quite far away from the prototype and, appropriately, they tend to be classified fairly quickly. However, the classification goes contrary to what the model would predict: they tend to be considered harmful. These violations, then, break the patterns that our models uncover in the data. Both sides of the debate, then,  seem to have pointed out important aspects of this type of transgressions. Gray and Schein [-@scheinTheoryDyadicMorality2018] are right in insisting that that purity scenarios are understood through the lens of harm. However, these transgressions are distinctive insofar as they considered very harmful and yet are quite far away from the prototypical moral wrong. The challenge, then, is to explain this incongruence. Our findings suggest that we should move away from the debate about “harmless” wrongs, but it compels us to consider, then, how practices that are distant from the prototype come to be regarded as harmful. One alternative, for instance, is that there are different processes of “harmification” [@scheinMoralizationHarmificationDyadic2016]. While understanding the harmfulness of events that are very close to the prototype might be easy, doing the same for practices that are far away might be more cognitively strenuous. Therefore, it might be necessary for groups to build additional moral scaffolding – such as taboos and mechanisms of public shame – in order to bring events that are very far away from the template into the realm of harm. These are only conjectures, but they serve to highlight an important point: our findings suggest that what is distinctive about purity scenarios is not that they are harmless, but rather that their semantic structure does not match their perceived harmfulness. Research on moral cognition should seek to understand, then, how these violations come to be perceived through the lens of harm. 
+By establishing these connotative regularities, I am able to outline a formal definition of what the template of an immoral act looks like and to calculate deviations from said template. Finding important semantic dimensions for the attribution of immorality helps me place the scenarios on a plane defined by those dimensions. By “maximizing” the values on these dimensions, I can represent the prototypical moral wrong as a point in this space and, therefore, I can calculate how distant or close the scenarios are from this template. This allows me to directly test the proposition that moral cognition occurs through template matching. The results from Study 2 show that distance from the template is indeed informative of how long it takes individuals to classify events as harmful. Moreover, the findings from the last study suggest that distance from the template has external validity beyond the highly curated set of moral vignettes, yielding information about the sentiment that is found around events in naturally occurring text. Interestingly, the results from Study 2 also suggest how this relationship should be understood, a point that Gray and Schein [-@scheinTheoryDyadicMorality2018] do not elaborate on. The relationship is quadratic: as distance increases reaction time increases, but only up to a point. Individuals are quick to classify events that are very close or far apart from the template. Events that lie at a middling distance are more ambiguous and take longer to be perceived as harmful. These findings, then, provide empirical evidence for the notion that template matching mediates moral cognition, but also give a clearer idea of how this process occurs. 
+
+These studies also shed light on one of the most important debates within the study of moral cognition. Many of the recent theoretical developments in the study of morality have been animated by the question of whether there are such things as harmless wrongs [@tepeHarmfulnessImpurityMoral2019]. These scenarios tend to be associated with the “purity” foundation: they often involve sexual or dietary taboos. As noted above, MFT arose as an attempt to incorporate these cases, while gray and Schein’s work could be seen as a response to the categorization efforts. The results from Study 1 side with the latter, noting that some of the so-called “purity” transgressions are perceived as very harmful. Yet, the findings of Study 2 compel us to rethink the distinctiveness of these scenarios. They are quite far away from the prototype and, appropriately, they tend to be classified fairly quickly. However, the classification goes contrary to what the model would predict: they tend to be considered harmful. These violations, then, break the patterns that our models uncover in the data. Both sides of the debate, then,  seem to have pointed out important aspects of this type of transgressions. Gray and Schein [-@scheinTheoryDyadicMorality2018] are right in insisting that that purity scenarios are understood through the lens of harm. However, these transgressions are distinctive insofar as they considered very harmful and yet are quite far away from the prototypical moral wrong. My findings suggest that we should move away from the debate about “harmless” wrongs, but they compel us to consider, then, how practices that are distant from the moral template come to be regarded as harmful. One alternative, for instance, is that there are different processes of “harmification” [@scheinMoralizationHarmificationDyadic2016]. While harm might be readily apparent in events that are close to the template, it might be harder to discern in situations that are really distant from it. Thus, more moral legwork – in the form of norms, denunciations, and justifications – might be needed in order to teach members of a group how to spot harmfulness in such events. In Study 3, I sought to test this hypothesis and found some evidence for its plausibility. In the corpus of Vox articles, events that were surrounded by more negative sentiment also had more “moral vocabulary” around them. As events move away from the template, the rate of moral vocabulary around them decreased. However, there was a positive interaction term between distance and negative sentiment. This means that at really high levels of negative sentiment, as events move away from the template they should expect to be surrounded by more moral vocabulary. So if events are really far away from the template and really negative – like the so called purity violations –, there should be more moral scaffolding around them. This is by no means a definitive finding but only an indication of the plausibility of this explanation. More importantly, however, this finding shows how we can harness natural language processing and semantic analysis to elucidate one of the most important debates in the study of moral cognition. 
 
 ## Limitations and Future Directions
 
