@@ -1,0 +1,395 @@
+StartDate,EndDate,Status,IPAddress,Progress,Duration (in seconds),Finished,RecordedDate,ResponseId,RecipientLastName,RecipientFirstName,RecipientEmail,ExternalReference,LocationLatitude,LocationLongitude,DistributionChannel,UserLanguage,consent,PID,welcome,pkp_h_1,pkp_i_1,pkp_u_1,pch_h_1,pch_i_1,pch_u_1,tmdp_h_1,tmdp_i_1,tmdp_u_1,whh_h_1,whh_i_1,whh_u_1,thls_h_1,thls_i_1,thls_u_1,ach_1_1,ach_2_1,ach_3_1,ach_4_1,ach_5_1,ach_6_1,adr_h_1,adr_i_1,adr_u_1,elb_h_1,elb_i_1,elb_u_1,acr_h_1,acr_i_1,acr_u_1,jbd_h_1,jbd_i_1,jbd_u_1,scc_h_1,scc_i_1,scc_u_1,ddf_h_1,ddf_i_1,ddf_u_1,git_h_1,git_i_1,git_u_1,idb_h_1,idb_i_1,idb_u_1,ayc_h_1,ayc_i_1,ayc_u_1,sip_h_1,sip_i_1,sip_u_1,ecc_h_1,ecc_i_1,ecc_u_1,ccr_h_1,ccr_i_1,ccr_u_1,mbr_h_1,mbr_i_1,mbr_u_1,msn_h_1,msn_i_1,msn_u_1,mbw_h_1,mbw_i_1,mbw_u_1,mpsa_h_1,mpsa_i_1,mpsa_u_1,php_h_1,php_i_1,php_u_1,mmc_h_1,mmc_i_1,mmc_u_1,mmls_h_1,mmls_i_1,mmls_u_1,msas_h_1,msas_i_1,msas_u_1,age_1,race,income,gender,int_pol,pol_id,pol_id_5_TEXT,ideology_1,country,time_us_1,religion,religion_5_TEXT,education,db,PROLIFIC_PID
+Start Date,End Date,Response Type,IP Address,Progress,Duration (in seconds),Finished,Recorded Date,Response ID,Recipient Last Name,Recipient First Name,Recipient Email,External Data Reference,Location Latitude,Location Longitude,Distribution Channel,User Language,"Thank you for participating! 
+
+ 
+
+This project is designed to study the way people judge whether certain situations are right or wrong. You will to have rate a series of events on three different scales. The entire study should take approximately 25 minutes.
+Key Information 
+
+
+Your participation is entirely voluntary and you may withdraw at any point. However, you must answer all questions, perform all tasks, and proceed to the final screen of the study in order to receive a link for your payment. For successful participation in the study, you will receive $2.71, paid by transfer to your Prolific account. 
+
+ 
+
+We will adhere, at all times, to strict standards of confidentiality. Information obtained through your participation will be accessible only by the research team. Your name will not be attached to your data in any way. Although collected data may be made public or used for future research purposes, your identity will always remain confidential. 
+
+ 
+
+You must be in the United States to qualify to participate in this study. If you are not, you will be directed to the end of the survey after this page. Further, in accordance with Prolific policies, we may reject your work if the task was not completed correctly or the instructions were not followed.
+
+
+
+This is a study about moral transgressions and, therefore, the vignettes that you will have to evaluate might contain graphic and/or violent language (e.g. references to murder or sexual violence). If this is in any way distressing, please feel free to abstain from participation.
+
+
+
+If you have questions, you may contact Duke Researchers at nr120@duke.edu. If you have any questions about your rights as a research participant, please contact the Duke University Human Subjects Protection Committee at campusIRB@duke.edu. 
+
+
+
+By clicking “I agree to participate” you indicate that you understand the study description above, that you understand the qualifications to participate in this study, that you will follow instructions in the study, and that you agree to participate. You may save and/or print this form if you want to.",Please enter your Prolific ID:,"Welcome and thank you for deciding to take part in the present study! Before you begin, please read the following instructions carefully:
+
+ 
+
+Most of our everyday interactions are normal and mundane and go by unnoticed. However, events that involve moral transgressions often stick out; they seem more or less harmful, more or less unexpected.
+
+
+In the current task, we will present you some scenarios and will ask you to tell us how immoral, unexpected, and harmful you think they are. Throughout the questionnaire, you will also be shown some active participation checks. These look just like the other questions, except that you will be told exactly what option to choose. They will help us ensure you are completing the task carefully. 
+
+ 
+
+Please remember to read all questions and instructions carefully so that you are sure to respond to all participation checks correctly. Failing to do so will result in a loss of payment. If you are completing the survey on your cellphone, make sure to turn your device sideways (to landscape mode) so that all questions are displayed properly.
+
+ 
+
+A final word of warning before we begin: the following vignettes might contain strong and graphic language. If you would rather not be exposed to such language, please feel free to abstain from participation. Thank you!","How harmful is this event?
+
+ 
+
+A person kills another person. - 1","How immoral is this event?
+
+ 
+
+A person kills another person. - 1","How unexpected is this event?
+
+ 
+
+A person kills another person. - 1","How harmful is this event?
+
+ 
+
+A person hurts a child. - 1","How immoral is this event?
+
+ 
+
+A person hurts a child. - 1","How unexpected is this event?
+
+ 
+
+A person hurts a child. - 1","How harmful is this event?
+
+ 
+
+A teenager mocks a disabled person. - 1","How immoral is this event?
+
+ 
+
+A teenager mocks a disabled person. - 1","How unexpected is this event?
+
+ 
+
+A teenager mocks a disabled person. - 1","How harmful is this event?
+
+ 
+
+A wife hits her forgetful husband. - 1","How immoral is this event?
+
+ 
+
+A wife hits her forgetful husband. - 1","How unexpected is this event?
+
+ 
+
+A wife hits her forgetful husband. - 1","How harmful is this event?
+
+ 
+
+A teacher hits a lazy student. - 1","How immoral is this event?
+
+ 
+
+A teacher hits a lazy student. - 1","How unexpected is this event?
+
+ 
+
+A teacher hits a lazy student. - 1","How harmful is this event?
+
+ 
+
+Rate this event as extremely harmful. - 1","How immoral is this event?
+
+ 
+
+Rate this event as not at all immoral. - 1","How unexpected is this event?
+
+ 
+
+Rate this event as moderately unexpected. - 1","How harmful is this event?
+
+ 
+
+Rate this event as not at all harmful. - 1","How immoral is this event?
+
+ 
+
+Rate this event as extremely immoral. - 1","How unexpected is this event?
+
+ 
+
+Rate this event as extremely unexpected. - 1","How harmful is this event?
+
+ 
+
+An athlete deceives the referee. - 1","How immoral is this event?
+
+ 
+
+An athlete deceives the referee. - 1","How unexpected is this event?
+
+ 
+
+An athlete deceives the referee. - 1","How harmful is this event?
+
+ 
+
+An employee lies to the boss. - 1","How immoral is this event?
+
+ 
+
+An employee lies to the boss. - 1","How unexpected is this event?
+
+ 
+
+An employee lies to the boss. - 1","How harmful is this event?
+
+ 
+
+An athlete cheats their rival. - 1","How immoral is this event?
+
+ 
+
+An athlete cheats their rival. - 1","How unexpected is this event?
+
+ 
+
+An athlete cheats their rival. - 1","How harmful is this event?
+
+ 
+
+A judge befriends the defendant. - 1","How immoral is this event?
+
+ 
+
+A judge befriends the defendant. - 1","How unexpected is this event?
+
+ 
+
+A judge befriends the defendant. - 1","How harmful is this event?
+
+ 
+
+A student cheats their classmate. - 1","How immoral is this event?
+
+ 
+
+A student cheats their classmate. - 1","How unexpected is this event?
+
+ 
+
+A student cheats their classmate. - 1","How harmful is this event?
+
+ 
+
+A daughter disobeys her father. - 1","How immoral is this event?
+
+ 
+
+A daughter disobeys her father. - 1","How unexpected is this event?
+
+ 
+
+A daughter disobeys her father. - 1","How harmful is this event?
+
+ 
+
+A girl interrupts her teacher. - 1","How immoral is this event?
+
+ 
+
+A girl interrupts her teacher. - 1","How unexpected is this event?
+
+ 
+
+A girl interrupts her teacher. - 1","How harmful is this event?
+
+ 
+
+An intern disobeys the boss. - 1","How immoral is this event?
+
+ 
+
+An intern disobeys the boss. - 1","How unexpected is this event?
+
+ 
+
+An intern disobeys the boss. - 1","How harmful is this event?
+
+ 
+
+An athlete yells at their coach. - 1","How immoral is this event?
+
+ 
+
+An athlete yells at their coach. - 1","How unexpected is this event?
+
+ 
+
+An athlete yells at their coach. - 1","How harmful is this event?
+
+ 
+
+A student insults the professor. - 1","How immoral is this event?
+
+ 
+
+A student insults the professor. - 1","How unexpected is this event?
+
+ 
+
+A student insults the professor. - 1","How harmful is this event?
+
+ 
+
+An employee conspires with a competitor. - 1","How immoral is this event?
+
+ 
+
+An employee conspires with a competitor. - 1","How unexpected is this event?
+
+ 
+
+An employee conspires with a competitor. - 1","How harmful is this event?
+
+ 
+
+A coach cheers for the rival. - 1","How immoral is this event?
+
+ 
+
+A coach cheers for the rival. - 1","How unexpected is this event?
+
+ 
+
+A coach cheers for the rival. - 1","How harmful is this event?
+
+ 
+
+A man betrays his relative. - 1","How immoral is this event?
+
+ 
+
+A man betrays his relative. - 1","How unexpected is this event?
+
+ 
+
+A man betrays his relative. - 1","How harmful is this event?
+
+ 
+
+The mayor slanders a neighbor. - 1","How immoral is this event?
+
+ 
+
+The mayor slanders a neighbor. - 1","How unexpected is this event?
+
+ 
+
+The mayor slanders a neighbor. - 1","How harmful is this event?
+
+ 
+
+A man betrays his wife. - 1","How immoral is this event?
+
+ 
+
+A man betrays his wife. - 1","How unexpected is this event?
+
+ 
+
+A man betrays his wife. - 1","How harmful is this event?
+
+ 
+
+A married person has sex with an adulterer. - 1","How immoral is this event?
+
+ 
+
+A married person has sex with an adulterer. - 1","How unexpected is this event?
+
+ 
+
+A married person has sex with an adulterer. - 1","How harmful is this event?
+
+ 
+
+A person hires a prostitute. - 1","How immoral is this event?
+
+ 
+
+A person hires a prostitute. - 1","How unexpected is this event?
+
+ 
+
+A person hires a prostitute. - 1","How harmful is this event?
+
+ 
+
+A man marries his cousin. - 1","How immoral is this event?
+
+ 
+
+A man marries his cousin. - 1","How unexpected is this event?
+
+ 
+
+A man marries his cousin. - 1","How harmful is this event?
+
+ 
+
+A man makes love to his sister. - 1","How immoral is this event?
+
+ 
+
+A man makes love to his sister. - 1","How unexpected is this event?
+
+ 
+
+A man makes love to his sister. - 1","How harmful is this event?
+
+ 
+
+A mother sexually arouses her son. - 1","How immoral is this event?
+
+ 
+
+A mother sexually arouses her son. - 1","How unexpected is this event?
+
+ 
+
+A mother sexually arouses her son. - 1",What is your age in years? - Age:,What race do you consider yourself?,"Please estimate your 2019 total household income before taxes, including all earners in your household:",What gender would you consider yourself?,How interested would you say you are in politics?,I consider myself to be a(n): - Selected Choice,I consider myself to be a(n): - Something else (Please Specify) - Text,"We hear a lot of talk these days about liberals and conservatives 
+On a scale from 1 to 7, going from extremely liberal  to extremely conservative, where would you place yourself? - 1",Were you born in the U.S.?,"In years, how long have you lived in the U.S.? - Years:",I consider myself: - Selected Choice,I consider myself: - Something else (Please Specify) - Text,What is the highest level of education that you have completed?,"Thank you for your participation. We would like to tell you about the purpose of the study you've just completed.
+As stated in the beginning of the survey, this study was designed to study how people interpret moral transgressions. More specifically, the goal of the project is to understand how the meanings we attach to the people involved in situations influence the extent to which we perceive those events as immoral. We are less surprised when certain types of people commit immoral acts, and we are less surprised when certain types of people are the victims of such actions.
+The scenarios used in this study contain different types of identities as well as different kinds of moral transgressions. This study is interested in how different combinations of these elements might affect how we make moral judgements. Your participation in this study will help researchers better understand how the structure of certain events might lead us to more readily identify moral wrongdoing.
+Thank you again for your time and participation. If you have any questions regarding this study, please contact us by email at nr120@duke.edu.",PROLIFIC_PID
+"{""ImportId"":""startDate"",""timeZone"":""America/Denver""}","{""ImportId"":""endDate"",""timeZone"":""America/Denver""}","{""ImportId"":""status""}","{""ImportId"":""ipAddress""}","{""ImportId"":""progress""}","{""ImportId"":""duration""}","{""ImportId"":""finished""}","{""ImportId"":""recordedDate"",""timeZone"":""America/Denver""}","{""ImportId"":""_recordId""}","{""ImportId"":""recipientLastName""}","{""ImportId"":""recipientFirstName""}","{""ImportId"":""recipientEmail""}","{""ImportId"":""externalDataReference""}","{""ImportId"":""locationLatitude""}","{""ImportId"":""locationLongitude""}","{""ImportId"":""distributionChannel""}","{""ImportId"":""userLanguage""}","{""ImportId"":""QID1""}","{""ImportId"":""QID219_TEXT""}","{""ImportId"":""QID109""}","{""ImportId"":""QID11_1""}","{""ImportId"":""QID125_1""}","{""ImportId"":""QID218_1""}","{""ImportId"":""QID127_1""}","{""ImportId"":""QID128_1""}","{""ImportId"":""QID129_1""}","{""ImportId"":""QID130_1""}","{""ImportId"":""QID131_1""}","{""ImportId"":""QID132_1""}","{""ImportId"":""QID133_1""}","{""ImportId"":""QID134_1""}","{""ImportId"":""QID135_1""}","{""ImportId"":""QID136_1""}","{""ImportId"":""QID137_1""}","{""ImportId"":""QID138_1""}","{""ImportId"":""QID211_1""}","{""ImportId"":""QID212_1""}","{""ImportId"":""QID213_1""}","{""ImportId"":""QID214_1""}","{""ImportId"":""QID215_1""}","{""ImportId"":""QID216_1""}","{""ImportId"":""QID142_1""}","{""ImportId"":""QID143_1""}","{""ImportId"":""QID144_1""}","{""ImportId"":""QID145_1""}","{""ImportId"":""QID146_1""}","{""ImportId"":""QID147_1""}","{""ImportId"":""QID148_1""}","{""ImportId"":""QID149_1""}","{""ImportId"":""QID150_1""}","{""ImportId"":""QID151_1""}","{""ImportId"":""QID152_1""}","{""ImportId"":""QID153_1""}","{""ImportId"":""QID154_1""}","{""ImportId"":""QID155_1""}","{""ImportId"":""QID156_1""}","{""ImportId"":""QID163_1""}","{""ImportId"":""QID164_1""}","{""ImportId"":""QID165_1""}","{""ImportId"":""QID166_1""}","{""ImportId"":""QID167_1""}","{""ImportId"":""QID168_1""}","{""ImportId"":""QID169_1""}","{""ImportId"":""QID170_1""}","{""ImportId"":""QID171_1""}","{""ImportId"":""QID172_1""}","{""ImportId"":""QID173_1""}","{""ImportId"":""QID174_1""}","{""ImportId"":""QID175_1""}","{""ImportId"":""QID176_1""}","{""ImportId"":""QID177_1""}","{""ImportId"":""QID181_1""}","{""ImportId"":""QID182_1""}","{""ImportId"":""QID183_1""}","{""ImportId"":""QID184_1""}","{""ImportId"":""QID185_1""}","{""ImportId"":""QID186_1""}","{""ImportId"":""QID187_1""}","{""ImportId"":""QID188_1""}","{""ImportId"":""QID189_1""}","{""ImportId"":""QID190_1""}","{""ImportId"":""QID191_1""}","{""ImportId"":""QID192_1""}","{""ImportId"":""QID193_1""}","{""ImportId"":""QID194_1""}","{""ImportId"":""QID195_1""}","{""ImportId"":""QID196_1""}","{""ImportId"":""QID197_1""}","{""ImportId"":""QID198_1""}","{""ImportId"":""QID199_1""}","{""ImportId"":""QID200_1""}","{""ImportId"":""QID201_1""}","{""ImportId"":""QID202_1""}","{""ImportId"":""QID203_1""}","{""ImportId"":""QID204_1""}","{""ImportId"":""QID205_1""}","{""ImportId"":""QID206_1""}","{""ImportId"":""QID207_1""}","{""ImportId"":""QID208_1""}","{""ImportId"":""QID209_1""}","{""ImportId"":""QID210_1""}","{""ImportId"":""QID123_1""}","{""ImportId"":""QID117""}","{""ImportId"":""QID119""}","{""ImportId"":""QID116""}","{""ImportId"":""QID113""}","{""ImportId"":""QID114""}","{""ImportId"":""QID114_5_TEXT""}","{""ImportId"":""QID120_1""}","{""ImportId"":""QID121""}","{""ImportId"":""QID118_1""}","{""ImportId"":""QID115""}","{""ImportId"":""QID115_5_TEXT""}","{""ImportId"":""QID122""}","{""ImportId"":""QID220""}","{""ImportId"":""PROLIFIC_PID""}"
+2019-10-30 12:36:37,2019-10-30 12:36:44,Survey Preview,,100,7,True,2019-10-30 12:36:44,R_2EiLYAXlBQ4FLpw,,,,,35.996795654296875,-78.89550018310546875,preview,EN,I do not agree to participate,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+2019-11-01 08:59:26,2019-11-01 09:07:01,IP Address,107.77.210.168,100,455,True,2019-11-01 09:07:03,R_3lSwxrWmdAIs6mT,,,,,41.94500732421875,-87.79959869384765625,anonymous,EN,I agree to participate,5d8e46b78133dc00142ef00b,Understood! Begin survey.,extremely harmful,extremely immoral,moderately unexpected,extremely harmful,extremely immoral,moderately unexpected,moderately harmful,moderately immoral,not at all unexpected,extremely harmful,extremely immoral,very unexpected,moderately harmful,moderately immoral,very unexpected,extremely harmful,not at all immoral,moderately unexpected,not at all harmful,extremely immoral,extremely unexpected,moderately harmful,moderately immoral,slightly unexpected,moderately harmful,moderately immoral,not at all unexpected,moderately harmful,extremely immoral,moderately unexpected,extremely harmful,extremely immoral,moderately unexpected,moderately harmful,very immoral,slightly unexpected,very harmful,moderately immoral,not at all unexpected,slightly harmful,not at all immoral,slightly unexpected,slightly harmful,slightly immoral,slightly unexpected,slightly harmful,not at all immoral,not at all unexpected,slightly harmful,not at all immoral,slightly unexpected,very harmful,slightly immoral,moderately unexpected,slightly harmful,not at all immoral,very unexpected,moderately harmful,moderately immoral,slightly unexpected,slightly harmful,slightly immoral,slightly unexpected,extremely harmful,extremely immoral,slightly unexpected,extremely harmful,extremely immoral,not at all unexpected,extremely harmful,extremely immoral,slightly unexpected,moderately harmful,extremely immoral,slightly unexpected,extremely harmful,extremely immoral,extremely unexpected,extremely harmful,extremely immoral,extremely unexpected,29,White,"$50,001 to $75,000",Female,Somewhat interested,Republican,,7,Yes,,Religious,,Associate's degree,Complete,5d8e46b78133dc00142ef00b
+2019-11-01 09:04:12,2019-11-01 09:10:56,IP Address,72.211.124.20,100,404,True,2019-11-01 09:10:57,R_vp0Zg5qMNurVvDb,,,,,29.970306396484375,-90.03119659423828125,anonymous,EN,I agree to participate,5b0e8c2bee290600010f622e,Understood! Begin survey.,extremely harmful,extremely immoral,very unexpected,extremely harmful,extremely immoral,moderately unexpected,very harmful,extremely immoral,moderately unexpected,extremely harmful,extremely immoral,very unexpected,extremely harmful,extremely immoral,extremely unexpected,extremely harmful,not at all immoral,moderately unexpected,moderately harmful,moderately immoral,moderately unexpected,slightly harmful,slightly immoral,slightly unexpected,moderately harmful,moderately immoral,moderately unexpected,moderately harmful,moderately immoral,moderately unexpected,extremely harmful,extremely immoral,very unexpected,moderately harmful,very immoral,slightly unexpected,slightly harmful,not at all immoral,not at all unexpected,slightly harmful,not at all immoral,not at all unexpected,slightly harmful,slightly immoral,slightly unexpected,slightly harmful,not at all immoral,moderately unexpected,moderately harmful,moderately immoral,moderately unexpected,moderately harmful,moderately immoral,moderately unexpected,slightly harmful,slightly immoral,very unexpected,moderately harmful,moderately immoral,moderately unexpected,very harmful,very immoral,very unexpected,very harmful,very immoral,moderately unexpected,moderately harmful,moderately immoral,moderately unexpected,moderately harmful,slightly immoral,slightly unexpected,moderately harmful,moderately immoral,very unexpected,very harmful,moderately immoral,extremely unexpected,extremely harmful,extremely immoral,very unexpected,37,White,"$100,000 or more",Female,Very interested,Democrat,,1,Yes,,An atheist,,Graduate or professional degree,Complete,5b0e8c2bee290600010f622e
+2019-11-01 09:05:31,2019-11-01 09:12:10,IP Address,100.12.162.139,100,398,True,2019-11-01 09:12:10,R_US0lU8lHZQ3xNhn,,,,,40.76300048828125,-73.9925994873046875,anonymous,EN,I agree to participate,59b759afd793b400014597f9,Understood! Begin survey.,extremely harmful,extremely immoral,extremely unexpected,extremely harmful,extremely immoral,extremely unexpected,slightly harmful,very immoral,moderately unexpected,moderately harmful,moderately immoral,moderately unexpected,moderately harmful,very immoral,moderately unexpected,extremely harmful,not at all immoral,moderately unexpected,not at all harmful,extremely immoral,extremely unexpected,not at all harmful,slightly immoral,slightly unexpected,slightly harmful,slightly immoral,moderately unexpected,slightly harmful,slightly immoral,slightly unexpected,moderately harmful,moderately immoral,moderately unexpected,slightly harmful,slightly immoral,slightly unexpected,slightly harmful,slightly immoral,slightly unexpected,not at all harmful,not at all immoral,slightly unexpected,slightly harmful,slightly immoral,slightly unexpected,slightly harmful,not at all immoral,slightly unexpected,slightly harmful,not at all immoral,slightly unexpected,very harmful,moderately immoral,moderately unexpected,slightly harmful,not at all immoral,extremely unexpected,moderately harmful,moderately immoral,moderately unexpected,slightly harmful,slightly immoral,slightly unexpected,moderately harmful,moderately immoral,moderately unexpected,very harmful,very immoral,moderately unexpected,not at all harmful,not at all immoral,slightly unexpected,moderately harmful,very immoral,extremely unexpected,moderately harmful,extremely immoral,very unexpected,extremely harmful,extremely immoral,extremely unexpected,26,White,"$25,001 to $50,000",Female,Very interested,Democrat,,2,Yes,,Agnostic,,Graduate or professional degree,Complete,59b759afd793b400014597f9
+2019-11-01 09:03:14,2019-11-01 09:12:19,IP Address,73.130.146.186,100,545,True,2019-11-01 09:12:20,R_3MJShYhoOjaaWsQ,,,,,39.78179931640625,-77.74700164794921875,anonymous,EN,I agree to participate,5dab9f53c966200012b04c27,Understood! Begin survey.,extremely harmful,extremely immoral,moderately unexpected,extremely harmful,extremely immoral,very unexpected,extremely harmful,extremely immoral,moderately unexpected,very harmful,extremely immoral,moderately unexpected,extremely harmful,extremely immoral,extremely unexpected,extremely harmful,not at all immoral,moderately unexpected,not at all harmful,extremely immoral,extremely unexpected,very harmful,very immoral,slightly unexpected,moderately harmful,very immoral,slightly unexpected,very harmful,very immoral,slightly unexpected,moderately harmful,moderately immoral,very unexpected,very harmful,very immoral,slightly unexpected,slightly harmful,very immoral,not at all unexpected,slightly harmful,slightly immoral,slightly unexpected,moderately harmful,very immoral,not at all unexpected,slightly harmful,slightly immoral,not at all unexpected,very harmful,very immoral,slightly unexpected,very harmful,extremely immoral,moderately unexpected,very harmful,slightly immoral,very unexpected,very harmful,very immoral,moderately unexpected,very harmful,very immoral,slightly unexpected,very harmful,very immoral,slightly unexpected,very harmful,extremely immoral,slightly unexpected,slightly harmful,moderately immoral,not at all unexpected,slightly harmful,moderately immoral,very unexpected,extremely harmful,extremely immoral,very unexpected,extremely harmful,extremely immoral,extremely unexpected,39,White,"$25,001 to $50,000",Female,Somewhat interested,Moderate/Somewhere Between,,2,Yes,,Agnostic,,Some college,Complete,5dab9f53c966200012b04c27
+2019-11-01 09:06:17,2019-11-01 09:12:33,IP Address,47.189.234.59,100,375,True,2019-11-01 09:12:34,R_2D8IVAakMSsavxx,,,,,33.10699462890625,-97.15979766845703125,anonymous,EN,I agree to participate,5bd7ef36e4d5b00001a9b99e,Understood! Begin survey.,extremely harmful,extremely immoral,extremely unexpected,extremely harmful,very immoral,very unexpected,very harmful,very immoral,moderately unexpected,extremely harmful,extremely immoral,extremely unexpected,extremely harmful,extremely immoral,extremely unexpected,not at all harmful,not at all immoral,not at all unexpected,not at all harmful,not at all immoral,not at all unexpected,slightly harmful,moderately immoral,moderately unexpected,slightly harmful,slightly immoral,slightly unexpected,very harmful,very immoral,moderately unexpected,moderately harmful,moderately immoral,moderately unexpected,slightly harmful,moderately immoral,moderately unexpected,slightly harmful,not at all immoral,not at all unexpected,slightly harmful,not at all immoral,slightly unexpected,very harmful,not at all immoral,slightly unexpected,slightly harmful,moderately immoral,moderately unexpected,slightly harmful,slightly immoral,very unexpected,slightly harmful,moderately immoral,slightly unexpected,not at all harmful,not at all immoral,not at all unexpected,moderately harmful,moderately immoral,very unexpected,moderately harmful,moderately immoral,very unexpected,extremely harmful,very immoral,moderately unexpected,very harmful,very immoral,very unexpected,not at all harmful,slightly immoral,slightly unexpected,very harmful,very immoral,very unexpected,slightly harmful,slightly immoral,extremely unexpected,extremely harmful,extremely immoral,extremely unexpected,28,White,"$100,000 or more",Male,Very interested,Democrat,,3,Yes,,Religious,,Bachelor's degree,Complete,5bd7ef36e4d5b00001a9b99e
+2019-11-01 09:04:17,2019-11-01 09:12:55,IP Address,76.118.76.39,100,517,True,2019-11-01 09:12:55,R_1d0t7xUPpZSEUFJ,,,,,44.4828948974609375,-73.22530364990234375,anonymous,EN,I agree to participate,5b188d1abdf4e1000163361c,Understood! Begin survey.,extremely harmful,extremely immoral,slightly unexpected,extremely harmful,extremely immoral,moderately unexpected,extremely harmful,extremely immoral,slightly unexpected,extremely harmful,extremely immoral,moderately unexpected,extremely harmful,extremely immoral,very unexpected,extremely harmful,not at all immoral,moderately unexpected,not at all harmful,extremely immoral,extremely unexpected,slightly harmful,moderately immoral,not at all unexpected,moderately harmful,moderately immoral,slightly unexpected,moderately harmful,moderately immoral,slightly unexpected,slightly harmful,slightly immoral,moderately unexpected,very harmful,very immoral,slightly unexpected,slightly harmful,slightly immoral,not at all unexpected,slightly harmful,slightly immoral,not at all unexpected,slightly harmful,very immoral,moderately unexpected,slightly harmful,not at all immoral,slightly unexpected,moderately harmful,moderately immoral,moderately unexpected,moderately harmful,moderately immoral,very unexpected,moderately harmful,moderately immoral,very unexpected,slightly harmful,slightly immoral,slightly unexpected,very harmful,very immoral,slightly unexpected,extremely harmful,extremely immoral,moderately unexpected,very harmful,very immoral,moderately unexpected,moderately harmful,slightly immoral,not at all unexpected,very harmful,extremely immoral,moderately unexpected,very harmful,extremely immoral,moderately unexpected,moderately harmful,very immoral,very unexpected,20,White,"$75,001 to $99,999",Female,Very interested,Independent,,1,Yes,,Agnostic,,Some college,Complete,5b188d1abdf4e1000163361c
+2019-11-01 09:06:34,2019-11-01 09:13:23,IP Address,24.184.9.28,100,408,True,2019-11-01 09:13:24,R_7QwW8ReeuO0UbQt,,,,,41.204498291015625,-73.19879913330078125,anonymous,EN,I agree to participate,5b4d31673d01bd0001ec447e,Understood! Begin survey.,extremely harmful,extremely immoral,extremely unexpected,extremely harmful,extremely immoral,extremely unexpected,extremely harmful,extremely immoral,very unexpected,extremely harmful,extremely immoral,extremely unexpected,extremely harmful,extremely immoral,very unexpected,extremely harmful,not at all immoral,moderately unexpected,not at all harmful,extremely immoral,extremely unexpected,slightly harmful,moderately immoral,slightly unexpected,moderately harmful,slightly immoral,slightly unexpected,moderately harmful,extremely immoral,very unexpected,moderately harmful,moderately immoral,very unexpected,slightly harmful,very immoral,moderately unexpected,slightly harmful,slightly immoral,not at all unexpected,not at all harmful,slightly immoral,not at all unexpected,slightly harmful,slightly immoral,not at all unexpected,moderately harmful,not at all immoral,moderately unexpected,very harmful,moderately immoral,very unexpected,moderately harmful,moderately immoral,very unexpected,not at all harmful,slightly immoral,very unexpected,moderately harmful,moderately immoral,moderately unexpected,moderately harmful,very immoral,very unexpected,moderately harmful,moderately immoral,moderately unexpected,very harmful,very immoral,moderately unexpected,not at all harmful,slightly immoral,not at all unexpected,moderately harmful,moderately immoral,very unexpected,very harmful,very immoral,extremely unexpected,very harmful,very immoral,very unexpected,27,White,"Less than $25,000",Male,Somewhat interested,Democrat,,1,Yes,,An atheist,,Bachelor's degree,Complete,5b4d31673d01bd0001ec447e
+2019-11-01 09:06:17,2019-11-01 09:13:36,IP Address,174.201.6.244,100,439,True,2019-11-01 09:13:37,R_2dowAZ02qjQGUNX,,,,,40.0251007080078125,-75.22609710693359375,anonymous,EN,I agree to participate,5d42dcd59cc9a30001e721f9,Understood! Begin survey.,extremely harmful,extremely immoral,extremely unexpected,extremely harmful,extremely immoral,extremely unexpected,extremely harmful,extremely immoral,moderately unexpected,slightly harmful,moderately immoral,slightly unexpected,very harmful,very immoral,extremely unexpected,extremely harmful,not at all immoral,moderately unexpected,not at all harmful,extremely immoral,extremely unexpected,slightly harmful,slightly immoral,not at all unexpected,moderately harmful,moderately immoral,slightly unexpected,slightly harmful,slightly immoral,moderately unexpected,very harmful,very immoral,extremely unexpected,moderately harmful,moderately immoral,moderately unexpected,slightly harmful,slightly immoral,slightly unexpected,slightly harmful,not at all immoral,slightly unexpected,moderately harmful,slightly immoral,very unexpected,slightly harmful,slightly immoral,moderately unexpected,moderately harmful,slightly immoral,moderately unexpected,very harmful,very immoral,very unexpected,slightly harmful,not at all immoral,moderately unexpected,very harmful,moderately immoral,very unexpected,very harmful,moderately immoral,very unexpected,very harmful,very immoral,moderately unexpected,very harmful,very immoral,very unexpected,slightly harmful,moderately immoral,moderately unexpected,extremely harmful,extremely immoral,extremely unexpected,extremely harmful,extremely immoral,extremely unexpected,extremely harmful,extremely immoral,extremely unexpected,35,White,"$100,000 or more",Male,Somewhat interested,Democrat,,3,Yes,,Religious,,Bachelor's degree,Complete,5d42dcd59cc9a30001e721f9
+2019-11-01 09:05:56,2019-11-01 09:14:02,IP Address,174.250.85.229,100,486,True,2019-11-01 09:14:05,R_DP6iEFT4dHv00vf,,,,,45.1183929443359375,-93.346099853515625,anonymous,EN,I agree to participate,5c465d35b29ea800015b0f46,Understood! Begin survey.,extremely harmful,very immoral,very unexpected,very harmful,very immoral,very unexpected,very harmful,very immoral,slightly unexpected,very harmful,very immoral,very unexpected,very harmful,extremely immoral,very unexpected,extremely harmful,not at all immoral,moderately unexpected,not at all harmful,extremely immoral,extremely unexpected,slightly harmful,moderately immoral,slightly unexpected,moderately harmful,moderately immoral,slightly unexpected,slightly harmful,slightly immoral,not at all unexpected,moderately harmful,very immoral,moderately unexpected,moderately harmful,moderately immoral,slightly unexpected,slightly harmful,slightly immoral,slightly unexpected,slightly harmful,slightly immoral,moderately unexpected,slightly harmful,slightly immoral,moderately unexpected,slightly harmful,moderately immoral,slightly unexpected,slightly harmful,moderately immoral,slightly unexpected,moderately harmful,very immoral,moderately unexpected,not at all harmful,not at all immoral,very unexpected,moderately harmful,very immoral,moderately unexpected,moderately harmful,moderately immoral,slightly unexpected,very harmful,very immoral,moderately unexpected,very harmful,very immoral,very unexpected,moderately harmful,moderately immoral,moderately unexpected,extremely harmful,extremely immoral,extremely unexpected,extremely harmful,extremely immoral,extremely unexpected,moderately harmful,extremely immoral,extremely unexpected,24,White,"Less than $25,000",Female,Somewhat interested,Independent,,2,Yes,,,,Associate's degree,Complete,5c465d35b29ea800015b0f46
+2019-11-01 09:07:44,2019-11-01 09:14:35,IP Address,70.163.38.165,100,411,True,2019-11-01 09:14:35,R_1qbaaRxJa9qUkHA,,,,,37.3950958251953125,-94.71050262451171875,anonymous,EN,I agree to participate,565b4f6310593c0012ff97f8,Understood! Begin survey.,extremely harmful,extremely immoral,moderately unexpected,very harmful,very immoral,moderately unexpected,moderately harmful,moderately immoral,slightly unexpected,very harmful,moderately immoral,moderately unexpected,very harmful,moderately immoral,very unexpected,extremely harmful,not at all immoral,moderately unexpected,not at all harmful,extremely immoral,extremely unexpected,slightly harmful,slightly immoral,slightly unexpected,slightly harmful,slightly immoral,slightly unexpected,slightly harmful,moderately immoral,slightly unexpected,extremely harmful,extremely immoral,extremely unexpected,moderately harmful,very immoral,slightly unexpected,slightly harmful,slightly immoral,not at all unexpected,not at all harmful,not at all immoral,not at all unexpected,not at all harmful,not at all immoral,slightly unexpected,not at all harmful,not at all immoral,not at all unexpected,not at all harmful,not at all immoral,slightly unexpected,slightly harmful,moderately immoral,slightly unexpected,not at all harmful,not at all immoral,very unexpected,slightly harmful,slightly immoral,moderately unexpected,moderately harmful,slightly immoral,moderately unexpected,slightly harmful,moderately immoral,moderately unexpected,moderately harmful,moderately immoral,moderately unexpected,extremely harmful,very immoral,slightly unexpected,slightly harmful,slightly immoral,moderately unexpected,slightly harmful,slightly immoral,moderately unexpected,very harmful,slightly immoral,moderately unexpected,30,White,"$25,001 to $50,000",Female,Very interested,Something else (Please Specify),Socialist / communist,1,Yes,,An atheist,,Bachelor's degree,Complete,565b4f6310593c0012ff97f8
+2019-11-01 09:07:31,2019-11-01 09:14:37,IP Address,24.166.111.200,100,425,True,2019-11-01 09:14:37,R_2uOgjD3imtlqVvi,,,,,41.705902099609375,-81.19969940185546875,anonymous,EN,I agree to participate,5a2e4e2f443c10000121161c,Understood! Begin survey.,extremely harmful,extremely immoral,extremely unexpected,extremely harmful,very immoral,very unexpected,very harmful,moderately immoral,slightly unexpected,moderately harmful,slightly immoral,very unexpected,very harmful,moderately immoral,extremely unexpected,extremely harmful,not at all immoral,moderately unexpected,not at all harmful,extremely immoral,extremely unexpected,slightly harmful,slightly immoral,slightly unexpected,slightly harmful,slightly immoral,not at all unexpected,slightly harmful,moderately immoral,slightly unexpected,very harmful,slightly immoral,very unexpected,slightly harmful,slightly immoral,not at all unexpected,slightly harmful,not at all immoral,not at all unexpected,not at all harmful,not at all immoral,not at all unexpected,moderately harmful,not at all immoral,slightly unexpected,not at all harmful,not at all immoral,not at all unexpected,moderately harmful,not at all immoral,not at all unexpected,moderately harmful,slightly immoral,very unexpected,slightly harmful,not at all immoral,extremely unexpected,slightly harmful,not at all immoral,slightly unexpected,very harmful,slightly immoral,very unexpected,moderately harmful,moderately immoral,moderately unexpected,moderately harmful,slightly immoral,moderately unexpected,slightly harmful,slightly immoral,slightly unexpected,slightly harmful,very immoral,very unexpected,slightly harmful,extremely immoral,extremely unexpected,very harmful,extremely immoral,extremely unexpected,28,White,"$50,001 to $75,000",Male,Somewhat interested,Democrat,,1,Yes,,Agnostic,,Some college,Complete,5a2e4e2f443c10000121161c
+2019-11-01 09:08:44,2019-11-01 09:16:41,IP Address,100.10.58.21,100,477,True,2019-11-01 09:16:42,R_2z8CdxZNeueH35o,,,,,41.7010040283203125,-71.51940155029296875,anonymous,EN,I agree to participate,5db7e95a0b850e000f5e0b6f,Understood! Begin survey.,extremely harmful,extremely immoral,moderately unexpected,very harmful,extremely immoral,slightly unexpected,moderately harmful,very immoral,slightly unexpected,moderately harmful,very immoral,very unexpected,very harmful,very immoral,very unexpected,extremely harmful,not at all immoral,moderately unexpected,not at all harmful,extremely immoral,extremely unexpected,slightly harmful,moderately immoral,moderately unexpected,slightly harmful,very immoral,not at all unexpected,moderately harmful,very immoral,very unexpected,very harmful,very immoral,extremely unexpected,moderately harmful,very immoral,very unexpected,slightly harmful,slightly immoral,not at all unexpected,slightly harmful,slightly immoral,not at all unexpected,moderately harmful,not at all immoral,not at all unexpected,slightly harmful,not at all immoral,moderately unexpected,slightly harmful,slightly immoral,not at all unexpected,moderately harmful,very immoral,moderately unexpected,slightly harmful,slightly immoral,very unexpected,moderately harmful,very immoral,moderately unexpected,very harmful,very immoral,very unexpected,very harmful,very immoral,moderately unexpected,very harmful,very immoral,moderately unexpected,slightly harmful,not at all immoral,moderately unexpected,not at all harmful,not at all immoral,moderately unexpected,moderately harmful,moderately immoral,very unexpected,very harmful,extremely immoral,very unexpected,26,White,"$50,001 to $75,000",Male,Somewhat interested,Independent,,3,Yes,,An atheist,,Associate's degree,Complete,5db7e95a0b850e000f5e0b6f
+2019-11-01 09:08:00,2019-11-01 09:17:03,IP Address,67.6.58.240,100,542,True,2019-11-01 09:17:03,R_23dWrAJgeb5DfXi,,,,,36.7704010009765625,-93.2147979736328125,anonymous,EN,I agree to participate,5cc1ffded23cc900019905d0,Understood! Begin survey.,extremely harmful,extremely immoral,extremely unexpected,extremely harmful,extremely immoral,extremely unexpected,very harmful,extremely immoral,extremely unexpected,extremely harmful,extremely immoral,extremely unexpected,extremely harmful,extremely immoral,extremely unexpected,extremely harmful,not at all immoral,moderately unexpected,not at all harmful,extremely immoral,extremely unexpected,moderately harmful,moderately immoral,moderately unexpected,moderately harmful,moderately immoral,moderately unexpected,slightly harmful,moderately immoral,slightly unexpected,very harmful,very immoral,very unexpected,slightly harmful,moderately immoral,slightly unexpected,moderately harmful,moderately immoral,moderately unexpected,not at all harmful,not at all immoral,slightly unexpected,slightly harmful,slightly immoral,very unexpected,not at all harmful,not at all immoral,moderately unexpected,slightly harmful,slightly immoral,moderately unexpected,moderately harmful,moderately immoral,very unexpected,not at all harmful,not at all immoral,moderately unexpected,moderately harmful,moderately immoral,moderately unexpected,very harmful,very immoral,very unexpected,extremely harmful,very immoral,extremely unexpected,very harmful,very immoral,very unexpected,not at all harmful,slightly immoral,very unexpected,not at all harmful,slightly immoral,very unexpected,slightly harmful,moderately immoral,extremely unexpected,slightly harmful,very immoral,extremely unexpected,24,White,"$75,001 to $99,999",Male,Somewhat interested,Democrat,,2,Yes,,Agnostic,,Bachelor's degree,Complete,5cc1ffded23cc900019905d0
+2019-11-01 09:08:44,2019-11-01 09:18:52,IP Address,71.40.218.210,100,607,True,2019-11-01 09:18:52,R_25HlZUMZ0F4j2Uv,,,,,32.9720001220703125,-96.7913970947265625,anonymous,EN,I agree to participate,5d5315f889849a0001a76d1a,Understood! Begin survey.,extremely harmful,extremely immoral,moderately unexpected,extremely harmful,extremely immoral,not at all unexpected,moderately harmful,very immoral,slightly unexpected,moderately harmful,very immoral,extremely unexpected,very harmful,slightly immoral,extremely unexpected,extremely harmful,not at all immoral,moderately unexpected,not at all harmful,extremely immoral,extremely unexpected,slightly harmful,moderately immoral,slightly unexpected,slightly harmful,moderately immoral,not at all unexpected,slightly harmful,very immoral,slightly unexpected,very harmful,very immoral,extremely unexpected,slightly harmful,very immoral,slightly unexpected,slightly harmful,not at all immoral,not at all unexpected,not at all harmful,not at all immoral,slightly unexpected,slightly harmful,not at all immoral,slightly unexpected,moderately harmful,slightly immoral,extremely unexpected,slightly harmful,not at all immoral,very unexpected,very harmful,extremely immoral,moderately unexpected,not at all harmful,not at all immoral,extremely unexpected,very harmful,extremely immoral,very unexpected,very harmful,very immoral,very unexpected,moderately harmful,extremely immoral,moderately unexpected,very harmful,extremely immoral,not at all unexpected,not at all harmful,slightly immoral,not at all unexpected,slightly harmful,extremely immoral,extremely unexpected,extremely harmful,extremely immoral,extremely unexpected,extremely harmful,extremely immoral,extremely unexpected,33,African American/Black,"$100,000 or more",Female,Somewhat interested,Moderate/Somewhere Between,,3,Yes,,Agnostic,,Bachelor's degree,Complete,5d5315f889849a0001a76d1a
+2019-11-01 09:08:13,2019-11-01 09:18:56,IP Address,172.58.103.252,100,642,True,2019-11-01 09:18:57,R_pnGks86DpwGgtgJ,,,,,29.5041961669921875,-98.5697021484375,anonymous,EN,I agree to participate,5798be2b913c710001976173,Understood! Begin survey.,extremely harmful,extremely immoral,extremely unexpected,extremely harmful,extremely immoral,very unexpected,moderately harmful,very immoral,very unexpected,very harmful,very immoral,very unexpected,very harmful,very immoral,very unexpected,extremely harmful,not at all immoral,moderately unexpected,not at all harmful,extremely immoral,extremely unexpected,slightly harmful,slightly immoral,slightly unexpected,moderately harmful,moderately immoral,moderately unexpected,very harmful,very immoral,very unexpected,very harmful,very immoral,very unexpected,very harmful,very immoral,slightly unexpected,slightly harmful,slightly immoral,not at all unexpected,not at all harmful,not at all immoral,moderately unexpected,slightly harmful,slightly immoral,moderately unexpected,slightly harmful,slightly immoral,moderately unexpected,slightly harmful,moderately immoral,very unexpected,very harmful,very immoral,very unexpected,very harmful,moderately immoral,extremely unexpected,moderately harmful,moderately immoral,moderately unexpected,very harmful,moderately immoral,very unexpected,very harmful,very immoral,very unexpected,extremely harmful,very immoral,moderately unexpected,not at all harmful,slightly immoral,slightly unexpected,very harmful,very immoral,very unexpected,extremely harmful,extremely immoral,extremely unexpected,very harmful,extremely immoral,extremely unexpected,27,White,"$50,001 to $75,000",Male,Somewhat interested,Independent,,3,Yes,,Religious,,Bachelor's degree,Complete,5798be2b913c710001976173
+2019-11-01 09:02:16,2019-11-01 09:19:08,IP Address,170.253.171.247,100,1012,True,2019-11-01 09:19:08,R_sqarp4MOq1dNLRD,,,,,34.330902099609375,-89.48370361328125,anonymous,EN,I agree to participate,5a76a56c1904200001556da9,Understood! Begin survey.,extremely harmful,extremely immoral,very unexpected,extremely harmful,extremely immoral,very unexpected,very harmful,very immoral,moderately unexpected,extremely harmful,extremely immoral,very unexpected,extremely harmful,extremely immoral,extremely unexpected,extremely harmful,not at all immoral,moderately unexpected,not at all harmful,extremely immoral,extremely unexpected,moderately harmful,very immoral,slightly unexpected,slightly harmful,slightly immoral,not at all unexpected,moderately harmful,very immoral,moderately unexpected,very harmful,extremely immoral,very unexpected,slightly harmful,moderately immoral,slightly unexpected,moderately harmful,moderately immoral,not at all unexpected,not at all harmful,slightly immoral,not at all unexpected,slightly harmful,slightly immoral,moderately unexpected,slightly harmful,slightly immoral,moderately unexpected,slightly harmful,slightly immoral,moderately unexpected,moderately harmful,very immoral,moderately unexpected,very harmful,moderately immoral,extremely unexpected,moderately harmful,moderately immoral,moderately unexpected,very harmful,very immoral,moderately unexpected,extremely harmful,extremely immoral,slightly unexpected,extremely harmful,extremely immoral,slightly unexpected,very harmful,very immoral,slightly unexpected,very harmful,moderately immoral,extremely unexpected,extremely harmful,extremely immoral,extremely unexpected,extremely harmful,extremely immoral,extremely unexpected,48,White,"$75,001 to $99,999",Female,Somewhat interested,Democrat,,2,Yes,,Religious,,Some college,Complete,5a76a56c1904200001556da9
+2019-11-01 09:05:10,2019-11-01 09:21:39,IP Address,69.21.113.188,100,989,True,2019-11-01 09:21:40,R_2rASa9CT9JTpbdp,,,,,43.1898956298828125,-89.21849822998046875,anonymous,EN,I agree to participate,5697e0217183b8000d0fc35c,Understood! Begin survey.,extremely harmful,extremely immoral,very unexpected,extremely harmful,very immoral,moderately unexpected,very harmful,very immoral,very unexpected,extremely harmful,extremely immoral,extremely unexpected,extremely harmful,extremely immoral,extremely unexpected,extremely harmful,not at all immoral,moderately unexpected,not at all harmful,extremely immoral,extremely unexpected,slightly harmful,very immoral,very unexpected,moderately harmful,moderately immoral,moderately unexpected,moderately harmful,extremely immoral,very unexpected,moderately harmful,extremely immoral,extremely unexpected,moderately harmful,extremely immoral,moderately unexpected,slightly harmful,not at all immoral,not at all unexpected,not at all harmful,not at all immoral,moderately unexpected,moderately harmful,not at all immoral,moderately unexpected,not at all harmful,not at all immoral,moderately unexpected,moderately harmful,moderately immoral,moderately unexpected,extremely harmful,extremely immoral,extremely unexpected,slightly harmful,not at all immoral,extremely unexpected,slightly harmful,not at all immoral,slightly unexpected,extremely harmful,extremely immoral,very unexpected,very harmful,very immoral,moderately unexpected,very harmful,extremely immoral,moderately unexpected,moderately harmful,slightly immoral,slightly unexpected,not at all harmful,extremely immoral,extremely unexpected,extremely harmful,extremely immoral,extremely unexpected,extremely harmful,extremely immoral,extremely unexpected,28,Other,"Less than $25,000",Female,Not at all interested,Democrat,,2,Yes,,Agnostic,,Bachelor's degree,Complete,5697e0217183b8000d0fc35c
+2019-11-01 09:06:23,2019-11-01 09:23:29,IP Address,108.53.201.248,100,1025,True,2019-11-01 09:23:30,R_2w0r3kKCWczPieN,,,,,40.8446044921875,-74.57489776611328125,anonymous,EN,I agree to participate,5dbbb58c03a8561923e97d90,Understood! Begin survey.,extremely harmful,very immoral,very unexpected,very harmful,very immoral,moderately unexpected,moderately harmful,moderately immoral,slightly unexpected,moderately harmful,moderately immoral,slightly unexpected,moderately harmful,moderately immoral,moderately unexpected,extremely harmful,not at all immoral,moderately unexpected,not at all harmful,extremely immoral,extremely unexpected,not at all harmful,slightly immoral,slightly unexpected,slightly harmful,slightly immoral,slightly unexpected,moderately harmful,moderately immoral,slightly unexpected,moderately harmful,moderately immoral,moderately unexpected,slightly harmful,moderately immoral,slightly unexpected,not at all harmful,not at all immoral,not at all unexpected,not at all harmful,not at all immoral,slightly unexpected,slightly harmful,not at all immoral,slightly unexpected,slightly harmful,not at all immoral,slightly unexpected,slightly harmful,slightly immoral,slightly unexpected,moderately harmful,moderately immoral,slightly unexpected,moderately harmful,slightly immoral,extremely unexpected,slightly harmful,slightly immoral,slightly unexpected,slightly harmful,not at all immoral,slightly unexpected,slightly harmful,moderately immoral,slightly unexpected,slightly harmful,moderately immoral,slightly unexpected,not at all harmful,not at all immoral,not at all unexpected,slightly harmful,slightly immoral,moderately unexpected,slightly harmful,moderately immoral,moderately unexpected,very harmful,very immoral,moderately unexpected,34,White,"$100,000 or more",Male,Very interested,Something else (Please Specify),Progressive Liberal,2,Yes,,Agnostic,,High school degree or GED,Complete,5dbbb58c03a8561923e97d90
+2019-11-01 09:15:47,2019-11-01 09:35:17,IP Address,47.186.12.67,100,1169,True,2019-11-01 09:35:17,R_1lubiQoOAl1yIWD,,,,,33.0225067138671875,-96.72899627685546875,anonymous,EN,I agree to participate,5d04c27a0e44360001a3ecd7,Understood! Begin survey.,extremely harmful,extremely immoral,extremely unexpected,extremely harmful,extremely immoral,extremely unexpected,extremely harmful,extremely immoral,moderately unexpected,moderately harmful,moderately immoral,moderately unexpected,extremely harmful,extremely immoral,extremely unexpected,extremely harmful,not at all immoral,moderately unexpected,not at all harmful,extremely immoral,extremely unexpected,extremely harmful,extremely immoral,moderately unexpected,moderately harmful,extremely immoral,moderately unexpected,extremely harmful,extremely immoral,very unexpected,moderately harmful,very immoral,moderately unexpected,moderately harmful,extremely immoral,moderately unexpected,extremely harmful,extremely immoral,moderately unexpected,moderately harmful,moderately immoral,moderately unexpected,moderately harmful,extremely immoral,moderately unexpected,very harmful,moderately immoral,moderately unexpected,very harmful,extremely immoral,moderately unexpected,extremely harmful,extremely immoral,moderately unexpected,extremely harmful,extremely immoral,moderately unexpected,extremely harmful,extremely immoral,moderately unexpected,moderately harmful,extremely immoral,moderately unexpected,extremely harmful,extremely immoral,moderately unexpected,extremely harmful,extremely immoral,moderately unexpected,extremely harmful,extremely immoral,moderately unexpected,very harmful,moderately immoral,moderately unexpected,extremely harmful,extremely immoral,moderately unexpected,extremely harmful,extremely immoral,moderately unexpected,54,White,"Less than $25,000",Female,Very interested,Republican,,6,Yes,,Something else (Please Specify),I am a Christian.  Being religoius is legalistic.  God didn't create religion; humans did.,Associate's degree,Complete,5d04c27a0e44360001a3ecd7
+2019-11-01 09:09:13,2019-11-01 10:12:50,IP Address,73.135.80.124,100,3816,True,2019-11-01 10:12:51,R_3Hqv5azlXcAUmAR,,,,,39.21240234375,-76.87760162353515625,anonymous,EN,I agree to participate,5d1ccc7c7e747d0016183e65,Understood! Begin survey.,extremely harmful,extremely immoral,very unexpected,extremely harmful,extremely immoral,very unexpected,very harmful,extremely immoral,extremely unexpected,very harmful,very immoral,extremely unexpected,extremely harmful,extremely immoral,extremely unexpected,very harmful,very immoral,very unexpected,not at all harmful,extremely immoral,extremely unexpected,slightly harmful,slightly immoral,not at all unexpected,moderately harmful,moderately immoral,moderately unexpected,moderately harmful,very immoral,moderately unexpected,extremely harmful,extremely immoral,extremely unexpected,moderately harmful,very immoral,moderately unexpected,moderately harmful,very immoral,slightly unexpected,slightly harmful,slightly immoral,slightly unexpected,moderately harmful,moderately immoral,moderately unexpected,moderately harmful,moderately immoral,moderately unexpected,moderately harmful,moderately immoral,slightly unexpected,very harmful,very immoral,moderately unexpected,moderately harmful,moderately immoral,extremely unexpected,very harmful,very immoral,very unexpected,very harmful,very immoral,very unexpected,extremely harmful,extremely immoral,extremely unexpected,extremely harmful,extremely immoral,moderately unexpected,very harmful,very immoral,very unexpected,moderately harmful,very immoral,very unexpected,extremely harmful,extremely immoral,extremely unexpected,extremely harmful,extremely immoral,extremely unexpected,43,African American/Black,"$100,000 or more",Male,Somewhat interested,Independent,,3,Yes,,Religious,,Graduate or professional degree,Complete,5d1ccc7c7e747d0016183e65
