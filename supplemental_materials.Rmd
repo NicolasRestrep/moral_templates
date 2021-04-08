@@ -371,6 +371,7 @@ comparisons %>%
                    'Gender+Politics', 
                    'Gender')) %>% 
   select(model, everything()) %>% 
+  select(1:5) %>% 
   mutate_if(is.numeric, ~round(., digits = 2)) %>% 
   kable(caption = "LOO comparison", booktabs = T) %>% 
   kable_styling(latex_options = c('striped', 'scaled_down'))
@@ -743,6 +744,7 @@ comparisons %>%
                    'logarithmic',
                    'linear')) %>% 
   select(model, everything()) %>% 
+  select(1:5) %>% 
   mutate_if(is.numeric, ~round(., digits = 2)) %>% 
   kable(caption = "LOO comparison", booktabs = T) %>% 
   kable_styling(latex_options = c('striped', 'scale_down'))
@@ -766,15 +768,21 @@ b4 <- brm(reaction_time_harm ~ p_harm  + I(p_harm^2) + length + (1 | ids) + (1 |
 
 marg <- marginal_effects(b4)
 new_data <- marg$p_harm
-ggplot() + 
+```
+
+```{r}
+p1 <- ggplot() + 
   geom_jitter(data = dlhs, aes(x=p_harm, y=reaction_time_harm, col = type),alpha=0.2) + 
   geom_line(data = new_data, aes(x = p_harm, y = estimate__), size = 1.3, color = "blue") + 
   geom_ribbon(data = new_data, aes(x = p_harm, y = estimate__, ymax = upper__, ymin = lower__), fill="skyblue4",alpha=0.3) + 
   labs(x = "Proportion harmful (std)", 
        y = "Reaction Time (std)", 
        title = "Reaction Time by Proportion of Harmfulness", 
-       subtitle = "Raw data and fitted model") 
+       subtitle = "Raw data and fitted model")
 
+p1 
+
+ggsave("Figures/sm_fig1.png", p1, dpi = 300)
 ```
 
 Lastly, I am going to show that the results of the model presented in the main body of the text hold, even when we take the so-called purity scenarios out of the sample. Here are the coefficient estimates for this model:
@@ -784,8 +792,11 @@ b6 <- update(b2,
              formula = reaction_time_harm ~ 1 + distances_prot + I(distances_prot^2) + length + (1 | ids) + (1 | scenario) + readibility_indices, 
              newdata = (d_long_scaled %>% 
                           filter(type != 'purity')))
+```
+
+```{r}
 color_scheme_set("red")
-mcmc_intervals(b6, regex_pars = "^b_", prob_outer = 0.95) + 
+p2 <- mcmc_intervals(b6, regex_pars = "^b_", prob_outer = 0.95) + 
   labs(title = "Reaction Time Harm", 
        caption = "Excluding purity scenarios") +
   theme(plot.title = element_text(hjust = 0.5)) +
@@ -794,6 +805,10 @@ mcmc_intervals(b6, regex_pars = "^b_", prob_outer = 0.95) +
                               "Distance_Sqrd", 
                               "Length", 
                               "Readability"))
+
+p2 
+
+ggsave("Figures/sm_figure2.png", p2, dpi = 300)
 ```
 
 ## Study 3 
@@ -804,7 +819,7 @@ Here, I show that the results for the model presented in the main article hold f
 b7 <- readRDS(file = "fitted_models/poiss_model.rds")
 
 color_scheme_set("red")
-mcmc_intervals(b7, regex_pars = "^b_", prob_outer = 0.95)  + 
+p3 <- mcmc_intervals(b7, regex_pars = "^b_", prob_outer = 0.95)  + 
   labs(title = "Count of negative moral words", 
        caption = "Window of 50 words") +
   theme(plot.title = element_text(hjust = 0.5)) +
@@ -812,7 +827,8 @@ mcmc_intervals(b7, regex_pars = "^b_", prob_outer = 0.95)  +
                               "Distance", 
                               "Length", 
                               "Sentiment"))
-  
+
+ggsave("Figures/sm_figure3.png", p3, dpi = 300)
 ```
 
 
@@ -873,9 +889,11 @@ b8 <- brm(moral_count ~ dist_stand+len+comp_stand,
           control = list(adapt_delta = 0.95), 
           prior = c(prior(normal(0, 10), class = Intercept),
                     prior(normal(0, 1), class = b)))
+```
 
+```{r}
 color_scheme_set("red")
-mcmc_intervals(b8, regex_pars = "^b_", prob_outer = 0.95)  + 
+p4 <- mcmc_intervals(b8, regex_pars = "^b_", prob_outer = 0.95)  + 
   labs(title = "Count of negative moral words", 
        caption = "Window of 25 words") +
   theme(plot.title = element_text(hjust = 0.5)) +
@@ -883,6 +901,9 @@ mcmc_intervals(b8, regex_pars = "^b_", prob_outer = 0.95)  +
                               "Distance", 
                               "Length", 
                               "Sentiment"))
+p4 
+
+ggsave("Figures/sm_figure4.png", p4, dpi = 300)
 ```
 
 ```{r, include = F}
@@ -943,8 +964,11 @@ b9 <- brm(moral_count ~ dist_stand+len+comp_stand,
           prior = c(prior(normal(0, 10), class = Intercept),
                     prior(normal(0, 1), class = b)))
 
+```
+
+```{r}
 color_scheme_set("red")
-mcmc_intervals(b9, regex_pars = "^b_", prob_outer = 0.95)  + 
+p5 <- mcmc_intervals(b9, regex_pars = "^b_", prob_outer = 0.95)  + 
   labs(title = "Count of negative moral words", 
        caption = "Window of 10 words") +
   theme(plot.title = element_text(hjust = 0.5)) +
@@ -952,7 +976,11 @@ mcmc_intervals(b9, regex_pars = "^b_", prob_outer = 0.95)  +
                               "Distance", 
                               "Length", 
                               "Sentiment"))
+p5
+ggsave("Figures/sm_figure5.png", p5, dpi = 300)
 ```
 
 We notice that some of the estimates change in magnitude but the overall trends remain constant. Especially, the intercept shrinks as the windows get narrower. This makes sense: the smaller the windows the less chance there is of finding one of the 165 terms on the Moral Foundations Dictionary List. 
+
+## References:
 
