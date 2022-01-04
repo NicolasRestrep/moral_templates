@@ -652,15 +652,18 @@ df <- df %>%
   mutate(dist_stand = as.vector(scale(distances_prot)), 
          comp_stand = as.vector(scale(compound)), 
          neg_stand = as.vector(scale(negative)), 
-         len = excerpt_end-excerpt_start)
+         len = excerpt_end-excerpt_start) %>% 
+  mutate(negation = ifelse(str_detect(verb, "n't") == TRUE | 
+                             str_detect(verb, "never") == TRUE | 
+                             str_detect(verb, "not") == TRUE, 1, 0))
+dfbin <- df %>% 
+  mutate(bin_count = ifelse(moral_count == 0, 0, 1)) %>% 
+  filter(negation != 1)
 
-b6 <- brm(moral_count ~ dist_stand+len+comp_stand, 
-          data = df, 
-          family = 'poisson', 
-          iter = 5000, warmup = 1000, chains = 4, cores = 6,  
-          control = list(adapt_delta = 0.95), 
-          prior = c(prior(normal(0, 10), class = Intercept),
-                    prior(normal(0, 1), class = b)))
 
-saveRDS(b6, "~/Documents/fitted_models/poiss_model.rds")         
+b6 <- rstanarm::stan_glmer(bin_count ~ dist_stand+len+comp_stand + (1 | Document), 
+                           data = dfbin, 
+                           family = 'binomial')
+
+saveRDS(b6, "~/Documents/moral_templates/fitted_models/poiss_model.rds")         
  

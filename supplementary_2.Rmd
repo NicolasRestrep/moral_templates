@@ -1,0 +1,983 @@
+---
+title: "Supplemental Materials"
+author: "Nicolas Restrepo"
+date: '`r format(Sys.time(), "%d %B, %Y")`'
+fontsize: 12pt
+output:
+  pdf_document: default
+  html_document: default
+header-includes:
+  - \usepackage{setspace}
+  - \doublespacing
+  - \usepackage{lineno}
+  - \linenumbers
+  - \def\linenumberfont{\normalfont\tiny\sffamily}
+bibliography: template_references.bib
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = F, warning = F, message = F, fig.align='center')
+```
+
+## 1. List of Vignettes 
+
+```{r packages}
+# Packages 
+library(tidyverse)
+library(knitr)
+library(kableExtra)
+library(ggrepel)
+library(gridExtra)
+library(haven)
+library(lavaan)
+library(lme4)
+library(nlme)
+library(stargazer)
+library(broom)
+library(brms)
+library(plotly)
+library(sjPlot)
+library(plot3D)
+library(scatterplot3d)
+library(quanteda)
+library(quanteda.textstats)
+library(bayesplot)
+theme_set(theme_light())
+```
+
+
+Here is the full list of vignettes that were translated and used in Study 1 and 2. As explained in the main body of the text, I drew on the work of Gray and Keeney [-@grayImpureJustWeird2015], Clifford et. al. [-@cliffordMoralFoundationsVignettes2015], and Young and Saxe's [-@youngWhenIgnoranceNo2011]. I chose scenarios that had been previously used and that I could translate using ACT’s dictionaries. I also decided to include five scenarios for each of the five moral foundations. Although the idea that moral wrongs belong to distinct categories has been recently criticized, it remains useful to examine whether systematic differences exist. 
+
+### Harm 
+
+>*Someone sticks a pin into the palm of a child they don't know*
+
+>Adult (1.06, 1.81, 0.29) hurts ( -3.17   1.06   0.92) Child (1.89 -1.14 1.87)
+
+>*Someone intentionally kills another person*
+
+>Adult (1.06, 1.81, 0.29)   kills (-4.26  1.95   -0.11)  Adult (1.06, 1.81, 0.29)  
+
+>*You see a teenage boy chuckling at an amputee he passes by while on the subway.*
+
+>Boy (0.84   0.87   1.59) mocks (-2.48  -0.01   1.6) invalid ( -0.77 -1.73  -0.9)
+
+>*You see a wife hitting her husband on the side of his head for coming home late*
+
+>Wife (2.62   2.21   1.03) hits (-2.66   1.30   2.12) husband (1.95 1.64 0.38) 
+
+>*You see a teacher hitting a student's hand with a ruler for falling asleep in class.*
+
+>Teacher (2.5 2.31 0.32) hits (-2.66   1.30   2.12) lazy student (-0.42  -0.76  -1.56)
+
+
+### Fairness 
+
+>*You see a soccer player pretending to be seriously fouled by an opposing player.*
+
+>Athlete (1.81 2.5 2.45) lies to (-2.52 0.73 -0.19) referee (0.71 2.06 1.45)
+
+>*You see an employee lying about how many hours she worked during the week.*
+
+>Employee (1.04 -0.37 0.2) lies to (-2.52 0.73 -0.19) boss (0.91   2.79   1.07)
+
+>*You see a runner taking a shortcut on the course during the marathon*
+
+>Athlete (1.81 2.5 2.45) cheats (-3.29 0.15 -0.14) rival (-0.88   1.28   1.32)
+
+>*You see a judge taking on a criminal case although he is friends with the defendant* 
+
+>Judge (1.15 2.53 -0.22) befriends (2.36 2.17 0.16) defendant (0.14 -0.32 -0.15) 
+
+>*You see a student getting an A on a group project when he didn’t do any work*
+
+>Student (1.67 0.48 0.11) cheats (-3.29 0.15 -0.14) classmate (0.98 0.15 0.24)
+
+
+### Authority
+
+>*You see a girl ignoring her father's orders by taking the car after her curfew.*
+
+>Daughter (1.99 1.07 1.02) ignores (-1.73 0.53 -1.27) father (2.69 2.93 0.51)
+
+>*You see a girl repeatedly interrupting her teacher as he explains a new concept.*
+
+>Girl (2.1   1.41   0.74) interrupts (-1.99 0.39 1.84) teacher (2.5 2.31 0.32) 
+
+>*You see an intern disobeying an order to dress professionally and comb his hair*
+
+>Intern (1.41 -1.39 0.05) disobeys (-1.39 0.88 0.59) boss (0.91   2.79   1.07) 
+
+>*You see a player publicly yelling at his soccer coach during a playoff game.*
+
+>Athlete (2.72   2.71   2.80) yells at (-1.74 1.13 2.64) coach (1.96 2.37 2.19) 
+
+>*You see a student stating that her professor is a fool during an afternoon class.*
+
+>Student (1.67 0.48 0.11) insults ( -2.6 -0.06   1.4) professor (1.83 2.27 0.24) 
+
+### Loyalty
+
+>*You see an employee joking with competitors about how bad his company did last year.*
+
+>Employee (1.04 -0.37 0.2) conspires with (-0.53 1.24 0.08) competitor (0.52 1.59 1.4)
+
+>*You see a coach celebrating with the opposing team's players who just won the game.*
+
+>Coach (1.96 2.37 2.19) cheers (3.16 2.16 2.28) rival (-0.88   1.28   1.32)
+
+>*You see a man leaving his family business to go work for their main competitor.*
+
+>Man (1.1 1.63 0.62) betrays (-3.34 0.53 0.26) relative (2.35 1.59 0.96) 
+
+>*You see a mayor saying that the neighboring town is a much better town.*
+
+>Mayor (1.03 2.02 0.75) denigrates (-2.07 0.6 0.74) neighbor (1.46 0.49 0.07) 
+
+>*You see a man secretly voting against his wife in a local beauty pageant.*
+
+>Man (1.1 1.63 0.62) betrays (-3.34 0.53 0.26) wife (2.62 2.21 1.03)
+
+### Purity 
+
+>*Someone has an affair with another person, while they are married to someone else.*
+
+>Spouse (2.7   1.94   0.39) has sex with (2.09  2.45   1.74) Adulterer (-2.98 -0.15 0.21)
+
+>*Someone hires a prostitute for an evening of sex*
+
+>Adult (1.06, 1.81, 0.29)   hires (2.23   2.39   0.11) Prostitute (-1.35 -1.35 0.93)
+
+>*You see two first cousins getting married to each other in an elaborate wedding.*
+
+>Man (1.1 1.63 0.62) marries (2.52 2.28 0.21) cousin (1.58 0.38 0.7) 
+
+>Man (1.1 1.63 0.62) makes love to (3.14 2.79 1.08) sister (1.91 1.23 1.06) (*Adapted from Young and Saxe's [-@youngWhenIgnoranceNo2011] example of sibling incest*)
+
+>Mother (2.79 2.84 0.18) sexually arouses (2.28 2.34 0.96) son (1.68 1.4 0.86) (*Adapted from Young and Saxe's [-@youngWhenIgnoranceNo2011] example of parental incest*)
+
+## 2. Study 1 
+
+Here, I go through the model selection process for the models shown in Study 1. I explain why I chose to fit a parsimonious model, using only semantic components as the independent variables. 
+
+I begin by fitting a total of five models. I add controls in a step-wise fashion to assess how much they add to the explanatory value of each model. Then, I compare all models using LOO. 
+
+```{r}
+#Load in the conservative data
+c_data <- read_csv("data/conservatives_full.csv")
+#Get rid of the first 2 rows 
+c_data <- c_data[-(1:2), ]
+# Load pretest data 
+p_data <- read_csv("data/pretest.csv")
+p_data <- p_data[-(1:3), ]
+# Load the liberal data 
+l_data <- read_csv("data/liberals_complete.csv")
+l_data <- l_data[-(1:2),]
+# Now bind them together 
+data <- rbind(c_data, p_data, l_data)
+# Get attention checks for the data 
+data <- data %>% 
+  mutate(passed_1 = ifelse(ach_1_1 == "extremely harmful", 1, 0), 
+         passed_2 = ifelse(ach_2_1 == "not at all immoral", 1, 0), 
+         passed_3 = ifelse(ach_3_1 == "moderately unexpected", 1, 0), 
+         passed_4 = ifelse(ach_4_1 == "not at all harmful", 1, 0), 
+         passed_5 = ifelse(ach_5_1 == "extremely immoral", 1, 0), 
+         passed_6 = ifelse(ach_6_1 == "extremely unexpected", 1, 0), 
+         sum_pass = passed_1 + passed_2 + passed_3 + passed_4 + passed_5 + passed_6)
+# Now drop cases which did not pass the attention checks 
+data <- data %>% 
+  filter(sum_pass == 6)
+# Create variable that indicates if someone is conservative
+data <- data %>% 
+  mutate(conservative = ifelse(ideology_1 == 5 | ideology_1 == 6 | ideology_1 == 7, 1, 0)) 
+# Mutate all main questions so that we get numbers 
+data <- data %>% 
+  mutate_at(vars(contains("_h_1")), funs(recode(., 
+                                   "not at all harmful" = 1, 
+                                   "slightly harmful" = 2, 
+                                   "moderately harmful" = 3, 
+                                   "very harmful" = 4, 
+                                   "extremely harmful" = 5))) %>% 
+  mutate_at(vars(contains("_i_1")), funs(recode(., 
+                                   "not at all immoral" = 1, 
+                                   "slightly immoral" = 2, 
+                                   "moderately immoral" = 3, 
+                                   "very immoral" = 4, 
+                                   "extremely immoral" = 5))) %>% 
+  mutate_at(vars(contains("_u_1")), funs(recode(., 
+                                   "not at all unexpected" = 1, 
+                                   "slightly unexpected" = 2, 
+                                   "moderately unexpected" = 3, 
+                                   "very unexpected" = 4, 
+                                   "extremely unexpected" = 5)))
+# Get of of the first set of uninformative columns 
+d <- data %>% 
+  select(-contains("ach")) %>% 
+  select(pkp_h_1:msas_u_1, ideology_1, conservative, race, gender, income)
+# Now let's create a more amenable dataset 
+d <- d %>% 
+  mutate(id = 1:n()) %>% 
+  select(id, everything()) 
+# Rename all variables 
+numeric_variables <- d %>% 
+  select(-c(gender, race, income)) %>% 
+  colnames()
+d <- d %>%  
+  mutate_at(.vars = numeric_variables, as.numeric) %>% 
+  rename_all(
+    funs(str_remove(., "_1"))
+    ) 
+# Reshape harmful perceptions from wide to long 
+d_harm_long <- d %>% 
+  select(id, ideology, conservative, race, gender, income, contains("_h")) %>% 
+  gather(key = "scenario", value = "harm", 7:31) %>% 
+  mutate(scenario = str_remove(scenario, "_h$"))
+# Reshape immoral perceptions from wide to long 
+d_imm_long <- d %>% 
+  select(id, ideology, conservative, race, gender, income, contains("_i")) %>% 
+  gather(key = "scenario", value = "immoral", 7:31) %>% 
+  mutate(scenario = str_remove(scenario, "_i$"))
+# Reshape unexpected perceptions from wide to long 
+d_un_long <- d %>% 
+select(id, ideology, conservative, race, gender, income, contains("_u")) %>% 
+  gather(key = "scenario", value = "unexpected", 7:31) %>% 
+  mutate(scenario = str_remove(scenario, "_u$"))
+# Now join them 
+d_long <- d_harm_long %>% 
+  mutate(immoral = d_imm_long$immoral, 
+         unexpected = d_un_long$unexpected)
+# Load dataset with the deflections 
+selected_events <- read_csv("data/full_events.csv")
+# Create column for abreviations 
+events <- c("pch", 
+            "pkp", 
+            "tmdp", 
+            "adr", 
+            "elb", 
+            "acr", 
+            "jbd", 
+            "scc", 
+            "ddf", 
+            "git", 
+            "idb", 
+            "ayc", 
+            "sip", 
+            "ecc", 
+            "ccr", 
+            "mbr", 
+            "msn", 
+            "mbw", 
+            "php", 
+            "mmc", 
+            "mmls", 
+            "msas", 
+            "mpsa", 
+            "whh", 
+            "thls")
+# Create new column 
+events_def <- selected_events %>% 
+  mutate(scenario = events) %>% 
+  select(scenario, def, type, 5:33)
+# Add to long dataset 
+d_long <- d_long %>% 
+  left_join(events_def, by = "scenario")
+# Create a variable for negative behavior 
+d_long <- d_long %>% 
+  mutate(neg_beh = ifelse(be < 0, 1, 0))
+# create a summary table for the values of each question 
+gd <- d %>% 
+  select(-c(id, ideology, conservative, race, gender, income)) %>% 
+  gather(key = "scenario", 
+         value = "score") %>% 
+  group_by(scenario) %>% 
+  summarise_all(funs(med = median(.), avg = mean(.), maximum = max(.), minimum = min(.), st_dv = sd(.), fq = quantile(., 0.25), tq = quantile(., 0.75))) 
+gd <- gd %>% 
+  mutate(scenario = str_replace(scenario, "acr", "athlete_cheats_rival"), 
+         scenario = str_replace(scenario, "adr", "athlete_deceives_referee"), 
+         scenario = str_replace(scenario, "ayc", "athlete_yells_at_coach"), 
+         scenario = str_replace(scenario, "ccr", "coach_cheers_rival"), 
+         scenario = str_replace(scenario, "ddf", "daughter_disobeys_father"),
+         scenario = str_replace(scenario, "ecc", "employee_conspires_with_comp."),
+         scenario = str_replace(scenario, "elb", "employee_lies_to_boss"), 
+         scenario = str_replace(scenario, "git", "girl_interrupts_teacher"),
+         scenario = str_replace(scenario, "idb", "intern_disobeys_boss"), 
+         scenario = str_replace(scenario, "jbd", "judge_befriends_defendant"), 
+         scenario = str_replace(scenario, "mbr", "man_betrays_relative"), 
+         scenario = str_replace(scenario, "mbw", "man_betrays_wife"), 
+         scenario = str_replace(scenario, "mmc", "man_marries_cousin"),
+         scenario = str_replace(scenario, "mmls", "man_makes_love_sister"), 
+         scenario = str_replace(scenario, "mpsa", "married_has_sex_adulterer"), 
+         scenario = str_replace(scenario, "msas", "mother_sexually_arouses_son"), 
+         scenario = str_replace(scenario, "msn", "mayor_slanders_neighbor"), 
+         scenario = str_replace(scenario, "pch", "person_hurts_child"), 
+         scenario = str_replace(scenario, "php", "person_hires_prostitute"), 
+         scenario = str_replace(scenario, "pkp", "person_kills_person"),
+         scenario = str_replace(scenario, "scc", "student_cheats_classmate"), 
+         scenario = str_replace(scenario, "sip", "student_insults_professor"), 
+         scenario = str_replace(scenario, "thls", "teacher_hits_lazy_student"), 
+         scenario = str_replace(scenario, "whh", "wife_hits_husband"), 
+         scenario = str_replace(scenario, "tmdp", "teenager_mocks_disabled"))
+# create mean measures from the long dataset
+dsl <- d_long %>% 
+  group_by(scenario, type, def, dop) %>% 
+  summarise(mean_harm = mean(harm), 
+            mean_imm = mean(immoral), 
+            mean_unex = mean(unexpected)) 
+# Scale all variables before the analysis
+d_long_scaled <- 
+  d_long %>% 
+  mutate_at(c("id", "type", "scenario", "conservative", "neg_beh", "gender", "race", "income"), ~as.factor(.)) %>% 
+  mutate_if(is.numeric, scale)
+```
+
+```{r, include = F}
+
+# Parsimonious 
+b1 <- brm(immoral ~ 1 + ae + ap + aa + be + bp + ba + oe + op + oa + (1 | id) + (1 | scenario),
+           data = d_long_scaled, 
+          family = gaussian)
+# Add gender 
+b2 <- update(b1, 
+             formula = immoral ~ 1 + ae + ap + aa + be + bp + ba + oe + op + oa + (1 | id) + (1 | scenario) + gender, 
+             newdata = d_long_scaled)
+# Add political ideology
+b3 <- update(b1, 
+             formula = immoral ~ 1 + ae + ap + aa + be + bp + ba + oe + op + oa + (1 | id) + (1 | scenario) + gender + conservative, 
+             newdata = d_long_scaled)
+# Add race
+b4 <- update(b1, 
+             formula = immoral ~ 1 + ae + ap + aa + be + bp + ba + oe + op + oa + (1 | id) + (1 | scenario) + gender + conservative + race, 
+             newdata = d_long_scaled)
+# Add income 
+b5 <- update(b1, 
+             formula = immoral ~ 1 + ae + ap + aa + be + bp + ba + oe + op + oa + (1 | id) + (1 | scenario) + gender + conservative + race + income, 
+             newdata = d_long_scaled)
+```
+
+```{r}
+b1 <- add_criterion(b1, c("waic", "loo"))
+b2 <- add_criterion(b2, c("waic", "loo"))
+b3 <- add_criterion(b3, c("waic", "loo"))
+b4 <- add_criterion(b4, c("waic", "loo"))
+b5 <- add_criterion(b5, c("waic", "loo"))
+comparisons <- loo_compare(b1,b2,b3,b4,b5, criterion = "loo")
+model_weights <- model_weights(b1,b2,b3,b4,b5, weights = "loo")
+
+comparisons %>% 
+  as.tibble(.) %>% 
+  mutate(model = c('Parsimonious', 
+                   'Gender+Politics+Race', 
+                   'Gender+Politics+Race+Income', 
+                   'Gender+Politics', 
+                   'Gender')) %>% 
+  select(model, everything()) %>% 
+  select(1:5) %>% 
+  mutate_if(is.numeric, ~round(., digits = 2)) %>% 
+  kable(caption = "LOO comparison", booktabs = T) %>% 
+  kable_styling(latex_options = c('striped', 'scaled_down'))
+```
+
+The parsimonious here is narrowly better than the one that includes gender, race and political ideology as co-variates. Given that I am not interested in these population differences in the present study, and that the simplest model has the best fit, I err on the side of parsimony. 
+
+## 3. Study 2 
+
+Now, I am going to conduct the same analysis but for the model in Study 2. To answer this question, I fitted three different models. In all of them, the outcome variable is the time it took participants to classify an event as harmful or harmless. The main independent variable is Euclidean distance from the prototypical moral wrong and I control for the length of the statement and its readability (using the Felsch Kincaid index). All models are multi-level, cross-classified models, including varying intercepts for respondents and scenarios. The main difference is how the term for distance from the prototype is expressed: the first model includes only a linear term; the second expresses the relationship in a quadratic manner; and the third describes the relationship logarithmically. 
+
+
+```{r}
+# Load in conservative data
+rt_conservative <- read_csv("Data/rt_conservative.csv")
+
+# Load in liberal data 
+rt_liberal <- read_csv("Data/rt_liberal.csv")
+
+# Delete unnecessary rows 
+rt_conservative <- rt_conservative[-(1:2),]
+rt_liberal <- rt_liberal[-(1:2),]
+
+# How many people passed the attention checks?
+rt_conservative <- rt_conservative %>% 
+  mutate(passed = if_else(att_1 == "Harmless (K)" & att_2 == "Immoral (J)" & att_3 == "Harmful (J)", 1, 0)) 
+
+rt_liberal <- rt_liberal %>% 
+  mutate(passed = if_else(att_1 == "Harmless (K)" & att_2 == "Immoral (J)" & att_3 == "Harmful (J)", 1, 0)) 
+
+
+# Join both datasets 
+data <- rbind(rt_liberal, rt_conservative)
+
+# Filter people who did not pass
+data <- data %>% 
+  filter(passed == 1)
+
+# Now let's turn this into a long dataframe 
+
+# Create a manageable wide dataframe 
+
+rtw <- data %>% 
+  select(ends_with("Page Submit"), i_phc, i_pkp, i_tmdp, i_adr, i_elb, 
+         i_acr, i_jbd, i_scc, i_ddf, i_git, i_idb, i_ayc, i_sip, i_ecc, 
+         i_ccr, i_mbr, i_msn, i_mbw, i_php, i_mmc, i_mmls, i_msas, i_mpsa, i_whh, i_thls, h_phc, h_pkp, h_tmdp, h_adr, h_elb, 
+         h_acr, h_jbd, h_scc, h_ddf, h_git, h_idb, h_ayc, h_sip, h_ecc, 
+         h_ccr, h_mbr, h_msn, h_mbw, h_php, h_mmc, h_mmls, h_msas, h_mpsa, h_whh, h_thls) %>% 
+  mutate(ids = 1:184) %>% 
+  select(ids, everything())
+
+
+# Create a long dataframe for harm and reaction time
+
+d_long_harm_rt <- rtw %>% 
+  select(ids, starts_with("h_")) %>% 
+  pivot_longer(2:26, names_to = "scenario", values_to = "reaction_time_harm") %>% 
+  select(ids, scenario, reaction_time_harm) %>% 
+  mutate(scenario = str_remove(scenario, "_t_Page Submit$")) %>% 
+  mutate(scenario = str_remove(scenario, "^h_"))
+
+# Create a long dataframe for is_harm
+
+d_long_harm_bin <- rtw %>% 
+  select(ids, starts_with("h_")) %>% 
+  pivot_longer(27:51, names_to = "scenario", values_to = "is_harmful") %>% 
+  select(ids, scenario, is_harmful) %>% 
+  mutate(scenario = str_remove(scenario, "^h_"))
+
+d_long_harm <- left_join(d_long_harm_rt, d_long_harm_bin, by = c('ids', "scenario"))
+
+# Create a long dataframe for immorality and reaction time 
+
+d_long_imm_rt <- rtw %>% 
+  select(ids, starts_with("i_")) %>% 
+  pivot_longer(2:26, names_to = "scenario", values_to = "reaction_time_imm") %>% 
+  select(ids, scenario, reaction_time_imm) %>% 
+  mutate(scenario = str_remove(scenario, "_t_Page Submit$")) %>% 
+  mutate(scenario = str_remove(scenario, "^i_"))
+
+# Create a long dataframe for immorality and is_immoral
+
+d_long_imm_bin <- rtw %>% 
+  select(ids, starts_with("i_")) %>% 
+  pivot_longer(27:51, names_to = "scenario", values_to = "is_immoral") %>% 
+  select(ids, scenario, is_immoral) %>% 
+  mutate(scenario = str_remove(scenario, "^i_"))
+
+d_long_imm <- left_join(d_long_imm_rt, d_long_imm_bin, by = c('ids', 'scenario'))
+
+# Now join them 
+
+d_long <- left_join(d_long_harm, d_long_imm, by = c('ids', 'scenario')) %>% 
+  mutate_at(c('reaction_time_harm', 'reaction_time_imm'), as.numeric)
+
+
+# Let's get some information about the events in there 
+
+# Load dataset with the deflections 
+
+selected_events <- read_csv("data/full_events.csv")
+
+# Create column for abreviations 
+
+events <- c("phc", 
+            "pkp", 
+            "tmdp", 
+            "adr", 
+            "elb", 
+            "acr", 
+            "jbd", 
+            "scc", 
+            "ddf", 
+            "git", 
+            "idb", 
+            "ayc", 
+            "sip", 
+            "ecc", 
+            "ccr", 
+            "mbr", 
+            "msn", 
+            "mbw", 
+            "php", 
+            "mmc", 
+            "mmls", 
+            "msas", 
+            "mpsa", 
+            "whh", 
+            "thls")
+
+# Create new column 
+
+events_def <- selected_events %>% 
+  mutate(scenario = events) %>% 
+  select(scenario, def, type, 5:33)
+
+# Add to long dataset 
+
+d_long <- d_long %>% 
+  left_join(events_def, by = "scenario")
+
+# How many weird responses do we have? 
+# There are 66 responses that don't seem valid. Let's delete them
+
+d_long <- d_long %>% 
+  filter(reaction_time_harm >= 1 & 
+           reaction_time_imm >= 1 & 
+           reaction_time_harm <= 10 & 
+           reaction_time_imm <= 10)
+# Recode variables to binary 
+
+d_long <- d_long %>%  
+  mutate(is_immoral = case_when(is_immoral == "Immoral (J)" ~ 1, 
+                                is_immoral == "Not Immoral (K)" ~ 0), 
+         is_harmful = case_when(is_harmful == "Harmful (J)" ~ 1, 
+                                is_harmful == "Harmless (K)" ~ 0))
+
+# Create a new variable for the variances 
+
+d_long_var <- d_long %>% 
+  group_by(scenario) %>% 
+  summarise(p_harm = mean(is_harmful, na.rm = T), 
+            p_imm = mean(is_immoral, na.rm = T), 
+            v_harm = var(is_harmful, na.rm = T), 
+            v_imm = var(is_immoral, na.rm = T))
+
+# Join back to the long dataframe 
+
+d_long <- left_join(d_long, d_long_var, by = "scenario")
+
+dsl <- d_long %>% 
+  group_by(scenario, type) %>% 
+  summarise(mean_harm = mean(reaction_time_harm), 
+            mean_imm = mean(reaction_time_imm)) %>% 
+  ungroup()
+
+# Name the scenarios with the full length 
+
+dsl <- dsl %>% 
+  mutate(full_string = case_when(scenario == "acr" ~ "An athlete cheats their rival", 
+                                 scenario == "adr" ~ "An athlete deceives the referee", 
+                                 scenario == "ayc" ~ "An athlete yells at their coach", 
+                                 scenario == "ccr" ~ "A coach cheers for the rival", 
+                                 scenario == "ddf" ~ "A daughter disobeys her father", 
+                                 scenario == "ecc" ~ "An employee conspires with a competitor", 
+                                 scenario == "elb" ~ "An employee lies to the boss", 
+                                 scenario == "git" ~ "A girl interrupts her teacher", 
+                                 scenario == "idb" ~ "An intern disobeys their boss", 
+                                 scenario == "jbd" ~ "A judge befriends the defendant", 
+                                 scenario == "mbr" ~ "A man betrays his relative", 
+                                 scenario == "mbw" ~ "A man betrays his wife", 
+                                 scenario == "mmc" ~ "A man marries his cousin", 
+                                 scenario == "mmls" ~ "A man makes love to his sister", 
+                                 scenario == "mpsa" ~ "A married person has sex with an adulterer", 
+                                 scenario == "msas" ~ "A mother sexually arouses her son", 
+                                 scenario == "msn" ~ "A mayor slanders a neighbor", 
+                                 scenario == "phc" ~ "A person hurts a child", 
+                                 scenario == "php" ~ "A person hires a prostitute", 
+                                 scenario == "pkp" ~ "A person kills a person", 
+                                 scenario == "scc" ~ "A student cheats their classmate", 
+                                 scenario == "sip" ~ "A student insults the professor", 
+                                 scenario == "thls" ~ "A teacher hits a lazy student", 
+                                 scenario == "whh" ~ "A wife hits her forgetful husband", 
+                                 scenario == "tmdp" ~ "A teenager mocks a disabled person"))
+
+# Add the short versions again for the plot
+
+dsl <- dsl %>% 
+  mutate(length = str_count(full_string)) 
+
+# Calculate readibility 
+
+readibility_indices <- c(NA, rep = 25)
+
+for (i in 1: 25) {
+  
+  y <- textstat_readability(dsl$full_string[i], measure = "Flesch.Kincaid")
+  readibility_indices[i] <- y$Flesch.Kincaid
+}
+
+# Join with dsl 
+
+dsl <- cbind(dsl, readibility_indices)
+
+# Create function to calculate the euclidean distance in three-dimensional space 
+
+events_values <- events_def %>% 
+  select(scenario, op, be, bp)
+
+eucl_dist_pkp <- function(x) { 
+  op <-  events_values[x, 2] 
+  be <-  events_values[x, 3] 
+  bp <-  events_values[x, 4]
+  
+  # Formula   
+  # The values of the prototype are always the ones the events are compared against
+  distance <- sqrt((0.95 - op)^2 + ((-4.26) - be)^2 + (1.95 - bp)^2)
+  return(as.double(distance))
+}
+
+
+distances_pkp <- map_dbl(1:25, eucl_dist_pkp)
+
+events_values_pkp <- events_values %>% 
+  cbind(distances_pkp) %>% 
+  select(scenario, distances_pkp)
+
+# Join values with the long dataset 
+
+dsl <- dsl %>% 
+  left_join(events_values_pkp, by = "scenario")
+
+# Create new function with Person hurts child as the prototype 
+
+eucl_dist_phc <- function(x) { 
+  op <-  events_values[x, 2] 
+  be <-  events_values[x, 3] 
+  bp <-  events_values[x, 4]
+  
+  # Formula   
+  # The values of the prototype are always the ones the events are compared against
+  distance <- sqrt(((-1.14) - op)^2 + ((-3.17) - be)^2 + (1.06 - bp)^2)
+  return(as.double(distance))
+}
+
+
+distances_phc <- map_dbl(1:25, eucl_dist_phc)
+
+events_values_phc <- events_values %>% 
+  cbind(distances_phc) %>% 
+  select(scenario, distances_phc)
+
+# Join values with the long dataset 
+
+dsl <- dsl %>% 
+  left_join(events_values_phc, by = "scenario")
+
+# Create new function with Person hurts child as the prototype 
+
+eucl_dist_prot <- function(x) { 
+  op <-  events_values[x, 2] 
+  be <-  events_values[x, 3] 
+  bp <-  events_values[x, 4]
+  
+  # Formula   
+  # The values of the prototype are always the ones the events are compared against
+  distance <- sqrt(((-1.14) - op)^2 + ((-4.26) - be)^2 + (1.95 - bp)^2)
+  return(as.double(distance))
+}
+
+
+distances_prot <- map_dbl(1:25, eucl_dist_prot)
+
+events_values_prot <- events_values %>% 
+  cbind(distances_prot) %>% 
+  select(scenario, distances_prot)
+
+# Join values with the long dataset 
+
+dsl <- dsl %>% 
+  left_join(events_values_prot, by = "scenario")
+
+lengths <- dsl %>% 
+  select(scenario, length, readibility_indices, distances_phc, distances_pkp, distances_prot)
+
+d_long <- d_long %>% 
+  select(1:16, 36:39) %>% 
+  left_join(lengths, by = "scenario")
+
+# Add one column for the average reaction time of the person 
+
+# Create the averages 
+avg_rt <- d_long %>% 
+  select(ids, reaction_time_harm, reaction_time_imm) %>% 
+  pivot_longer(2:3) %>% 
+  group_by(ids) %>% 
+  summarise(avg_rt = mean(value))
+
+# Add averages to long data 
+
+d_long <- left_join(d_long, avg_rt, by = "ids")
+
+# Add ideological beliefs
+
+data_pol <- data %>% 
+  select(ideology_1) %>% 
+  mutate(ids = 1:184)
+
+d_long <- left_join(d_long, data_pol, by = "ids")
+
+```
+
+```{r}
+set.seed(34)
+d_long_scaled <- d_long %>% 
+  select(ids, reaction_time_harm, distances_prot, length, scenario, readibility_indices, type) %>% 
+  mutate(distance_sqr = distances_prot^2, 
+         distance_log = log(distances_prot)) %>% 
+  mutate_at(c("ids", "scenario"), as.factor) %>% 
+  mutate_if(is.numeric, scale)
+```
+
+```{r, include = F}
+# Linear specification
+b1 <- brm(formula = reaction_time_harm ~ 1 + distances_prot + length + (1 | ids) + (1 | scenario) + readibility_indices, 
+          iter = 5000, warmup = 1000, chains = 4, cores = 6,  
+          control = list(adapt_delta = 0.95), 
+          family = gaussian, 
+          data = d_long_scaled)
+# Quadratic specification
+b2 <- update(b1, 
+             formula = reaction_time_harm ~ 1 + distances_prot + I(distances_prot^2) + length + (1 | ids) + (1 | scenario) + readibility_indices, 
+             newdata = d_long_scaled)
+# Log specification
+b3 <- update(b1, 
+             formula = reaction_time_harm ~ 1 + distance_log + length + (1 | ids) + (1 | scenario) + readibility_indices, 
+             newdata = d_long_scaled)
+b1 <- add_criterion(b1, c("waic", "loo"))
+b2 <- add_criterion(b2, c("waic", "loo"))
+b3 <- add_criterion(b3, c("waic", "loo"))
+comparisons <- loo_compare(b1,b2, b3, criterion = "loo")
+model_weights <- model_weights(b1,b2,b3, weights = "loo")
+
+```
+
+```{r}
+comparisons %>% 
+  as.tibble(.) %>% 
+  mutate(model = c('quadratic', 
+                   'logarithmic',
+                   'linear')) %>% 
+  select(model, everything()) %>% 
+  select(1:5) %>% 
+  mutate_if(is.numeric, ~round(., digits = 2)) %>% 
+  kable(caption = "LOO comparison", booktabs = T) %>% 
+  kable_styling(latex_options = c('striped', 'scale_down'))
+```
+
+The comparison shows that the quadratic model is preferable, but only by a slight margin. This means that information criteria cannot be my only tool for discerning which model is more appropriate. I need to rely on more theoretically informed criteria. 
+
+My decision to choose the quadratic model is that this pattern shows up in other parts of the data. For example, the following plot shows the predictions of a cross-classified, multi-level model that regresses reaction time of harmfulness on the proportion of participants who classified that event as harmful. The most important point is that the relationship is parabolic: the events that had the most variance in how they were categorized took the longest to be classified. This finding furthers validates the decision to model the relationship between distance from the prototype and reaction as quadratic.
+
+```{r, include=F}
+dlhs <- d_long %>% 
+  select(ids, reaction_time_harm, reaction_time_imm, p_harm, p_imm, scenario, length, readibility_indices, type) %>% 
+  mutate_at(c("ids", "scenario"), as.factor) %>% 
+  mutate_if(is.numeric, scale)
+
+b4 <- brm(reaction_time_harm ~ p_harm  + I(p_harm^2) + length + (1 | ids) + (1 | scenario) + readibility_indices, 
+           data = dlhs, 
+          iter = 5000, warmup = 1000, chains = 4, cores = 6,  
+          control = list(adapt_delta = 0.95), 
+          family = gaussian)
+
+marg <- marginal_effects(b4)
+new_data <- marg$p_harm
+```
+
+```{r}
+p1 <- ggplot() + 
+  geom_jitter(data = dlhs, aes(x=p_harm, y=reaction_time_harm, col = type),alpha=0.2) + 
+  geom_line(data = new_data, aes(x = p_harm, y = estimate__), size = 1.3, color = "blue") + 
+  geom_ribbon(data = new_data, aes(x = p_harm, y = estimate__, ymax = upper__, ymin = lower__), fill="skyblue4",alpha=0.3) + 
+  labs(x = "Proportion harmful (std)", 
+       y = "Reaction Time (std)", 
+       title = "Reaction Time by Proportion of Harmfulness", 
+       subtitle = "Raw data and fitted model")
+
+p1 
+
+ggsave("Figures/sm_fig1.png", p1, dpi = 300)
+```
+
+Lastly, I am going to show that the results of the model presented in the main body of the text hold, even when we take the so-called purity scenarios out of the sample. Here are the coefficient estimates for this model:
+
+```{r, include=F}
+b6 <- update(b2, 
+             formula = reaction_time_harm ~ 1 + distances_prot + I(distances_prot^2) + length + (1 | ids) + (1 | scenario) + readibility_indices, 
+             newdata = (d_long_scaled %>% 
+                          filter(type != 'purity')))
+```
+
+```{r}
+color_scheme_set("red")
+p2 <- mcmc_intervals(b6, regex_pars = "^b_", prob_outer = 0.95) + 
+  labs(title = "Reaction Time Harm", 
+       caption = "Excluding purity scenarios") +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  scale_y_discrete(labels = c("Intercept", 
+                              "Distance", 
+                              "Distance_Sqrd", 
+                              "Length", 
+                              "Readability"))
+
+p2 
+
+ggsave("Figures/sm_figure2.png", p2, dpi = 300)
+```
+
+## 4. Study 3 
+
+Here, I show that the results for the model presented in the main article hold for different sizes of the window. These are the coefficients for the model presented in the text (window of 50 words), a model with a window of 25 words, and a narrow model with a window of just 10 words. 
+
+```{r}
+b6 <- readRDS(file = "fitted_models/poiss_model.rds")
+p3 <- plot_model(b6, 
+           type = "pred", terms = "dist_stand")
+
+p3 <- p3 + 
+  labs(x = "Distance from template", 
+       y = "Prob. of moral words", 
+       title = "Vox articles") + 
+  theme(plot.title = element_text(hjust = 0.5)) +
+  scale_y_continuous(limits = c(0,1), 
+                     breaks = c(0, 0.25, 0.5, 0.75,1))
+
+ggsave("Figures/sm_figure3.png", p3, dpi = 300)
+p3
+```
+
+
+```{r, include=F}
+# Get the datasets in 
+triplets_sentiment <- read_csv("Data/triplets_mfd_25.csv")
+dictionary <- read_csv("Data/FullSurveyorUSMeans.csv")
+
+# I need to clean the dictionary a bit before we do the matching 
+dictionary <- dictionary %>% 
+  mutate(term = term %>% tolower(.) %>% str_replace_all(., "_", " "))
+
+# Empty matrix for the loop 
+epa_matrix <- matrix(NA, nrow(triplets_sentiment), 6)
+
+for (x in 1:nrow(triplets_sentiment)) {
+  
+  match_obj <- match(triplets_sentiment$clean_objs[x], dictionary$term)
+  match_verb <- match(triplets_sentiment$clean_verbs[x], dictionary$term)
+  epa_matrix[x,1:3] <- dictionary[match_obj, 2:4] %>% as.matrix()
+  epa_matrix[x,4:6] <- dictionary[match_verb, 2:4] %>% as.matrix
+  
+  
+}
+
+# Rename resulting matrix 
+colnames(epa_matrix) <- c("oe", "op", "oa", "be", "bp", "bo")
+
+
+df <- cbind(triplets_sentiment, epa_matrix)
+
+# Now calculate the Euclidean distance 
+eucl_dist_prot <- function(x) { 
+  op <-  df[x, 'op'] 
+  be <-  df[x, 'be'] 
+  bp <-  df[x, 'bp']
+  
+  # Formula   
+  # The values of the prototype are always the ones the events are compared against
+  distance <- sqrt(((-1.14) - op)^2 + ((-4.26) - be)^2 + (1.95 - bp)^2)
+  return(as.double(distance))
+}
+
+distances_prot <- map_dbl(1:nrow(df), eucl_dist_prot)
+
+# Add to the main dataframe 
+df <- df %>% 
+  mutate(distances_prot = distances_prot) %>% 
+  mutate(dist_stand = as.vector(scale(distances_prot)), 
+         comp_stand = as.vector(scale(compound)), 
+         neg_stand = as.vector(scale(negative)), 
+         len = excerpt_end-excerpt_start)
+dfbin <- df %>% 
+  mutate(bin_count = ifelse(moral_count == 0, 0, 1))
+
+b8 <- rstanarm::stan_glm(bin_count ~ dist_stand+len+comp_stand, 
+      data = dfbin, 
+      family = 'binomial')
+```
+
+```{r}
+color_scheme_set("red")
+p4 <- mcmc_intervals(b8, prob_outer = 0.95)  + 
+  labs(title = "Prob. of negative moral words", 
+       caption = "Window of 25 words") +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  scale_y_discrete(labels = c("Intercept", 
+                              "Distance", 
+                              "Length", 
+                              "Sentiment"))
+p4 
+
+ggsave("Figures/sm_figure4.png", p4, dpi = 300)
+```
+
+```{r, include = F}
+# Get the datasets in 
+triplets_sentiment <- read_csv("Data/triplets_mfd_10.csv")
+dictionary <- read_csv("Data/FullSurveyorUSMeans.csv")
+
+# I need to clean the dictionary a bit before we do the matching 
+dictionary <- dictionary %>% 
+  mutate(term = term %>% tolower(.) %>% str_replace_all(., "_", " "))
+
+# Empty matrix for the loop 
+epa_matrix <- matrix(NA, nrow(triplets_sentiment), 6)
+
+for (x in 1:nrow(triplets_sentiment)) {
+  
+  match_obj <- match(triplets_sentiment$clean_objs[x], dictionary$term)
+  match_verb <- match(triplets_sentiment$clean_verbs[x], dictionary$term)
+  epa_matrix[x,1:3] <- dictionary[match_obj, 2:4] %>% as.matrix()
+  epa_matrix[x,4:6] <- dictionary[match_verb, 2:4] %>% as.matrix
+  
+  
+}
+
+# Rename resulting matrix 
+colnames(epa_matrix) <- c("oe", "op", "oa", "be", "bp", "bo")
+
+
+df <- cbind(triplets_sentiment, epa_matrix)
+
+# Now calculate the Euclidean distance 
+eucl_dist_prot <- function(x) { 
+  op <-  df[x, 'op'] 
+  be <-  df[x, 'be'] 
+  bp <-  df[x, 'bp']
+  
+  # Formula   
+  # The values of the prototype are always the ones the events are compared against
+  distance <- sqrt(((-1.14) - op)^2 + ((-4.26) - be)^2 + (1.95 - bp)^2)
+  return(as.double(distance))
+}
+
+distances_prot <- map_dbl(1:nrow(df), eucl_dist_prot)
+
+# Add to the main dataframe 
+df <- df %>% 
+  mutate(distances_prot = distances_prot) %>% 
+  mutate(dist_stand = as.vector(scale(distances_prot)), 
+         comp_stand = as.vector(scale(compound)), 
+         neg_stand = as.vector(scale(negative)), 
+         len = excerpt_end-excerpt_start)
+
+dfbin <- df %>% 
+  mutate(bin_count = ifelse(moral_count == 0, 0, 1))
+
+b9 <- rstanarm::stan_glm(bin_count ~ dist_stand+len+comp_stand, 
+      data = dfbin, 
+      family = 'binomial')
+```
+
+```{r}
+color_scheme_set("red")
+p5 <- mcmc_intervals(b9, prob_outer = 0.95)  + 
+  labs(title = "Prob. of negative moral words", 
+       caption = "Window of 10 words") +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  scale_y_discrete(labels = c("Intercept", 
+                              "Distance", 
+                              "Length", 
+                              "Sentiment"))
+p5
+ggsave("Figures/sm_figure5.png", p5, dpi = 300)
+```
+
+We notice that some of the estimates change in magnitude but the overall trends remain constant. The further away an event is from the template, the less likely it is that we find these negative moral words around it. The intercept shrinks as the windows get narrower. This makes sense: the smaller the windows the less chance there is of finding one of the 165 terms on the Moral Foundations Dictionary List. 
+
+## References:
+
